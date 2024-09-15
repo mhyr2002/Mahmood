@@ -1,0 +1,53 @@
+{%load static}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="{% stattic'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% stattic'css/material.css' %}" />
+	<link rel="stylesheet" href="{% stattic'css/additional-styles.css' %}" />
+	<link rel="stylesheet" href="{% stattic'css/not-found.css' %}" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+	<title>InnoWater-2.1</title>
+</head>
+
+<body>
+
+	<main>
+
+        <section class="not-found d-flex align-items-center">
+            <div class="bg-back-photo d-flex align-items-center">
+
+                <div class="container">
+
+                    <div class="row">
+                        <div class="d-flex justify-content-center align-items-center">
+
+                            <ul class="col-md-6 text-start">
+                                <li class="d-flex justify-content-center ms-5"><img src="{% static 'img/not-found-pic1.png' %}" alt="not-found-pic1"></li>
+                                <li><h1 class="fzf secondary-color">404</h1></li>
+                            </ul>
+
+                            <ul class="col-md-6 justify-content-center text-center ">
+                                <li><svg width="334" height="334" viewBox="0 0 334 334" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M116.103 203.042C122.586 196.09 130.424 190.54 139.135 186.734C147.846 182.929 157.251 180.951 166.757 180.918C176.263 180.885 185.673 182.8 194.41 186.545C203.147 190.29 211.027 195.784 217.559 202.69M85.5785 160.653C95.9512 149.53 108.493 140.65 122.43 134.561C136.368 128.471 151.402 125.304 166.611 125.251C181.821 125.198 196.872 128.263 210.852 134.255C224.831 140.246 237.442 149.039 247.892 160.09M44.8613 122.694C60.4204 106.009 79.2332 92.6889 100.139 83.5554C121.045 74.4218 143.59 69.664 166.404 69.5844C189.218 69.5047 211.822 74.1024 232.791 83.0898C253.761 92.0771 272.67 105.274 288.345 121.85M166.999 264.418C159.313 264.418 153.082 258.187 153.082 250.501C153.082 242.815 159.313 236.584 166.999 236.584C174.685 236.584 180.916 242.815 180.916 250.501C180.916 258.187 174.685 264.418 166.999 264.418Z" stroke="#010C8E" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+                                <li><p class="fw-bold fs-5 primary-color">Your internet is connected, but we did not find the desired page  !!</p></li>
+                                <li><p class="fw-bold fs-5 primary-color">Visit the home page without any worries.</p></li>
+                                <li><button type="submit" class="btn bg-transparent primary-color border-trans-primary fs-3 fw-bold m-3 p-3 px-4 rounded-pill">Home page</button></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+</body>
+
+</html>

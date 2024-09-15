@@ -1,0 +1,28 @@
+/* main */
+.blog-page{
+    margin-top: 10rem;
+}
+
+
+.blog-page-starting-img{
+    width: 100%;
+    height: auto;
+    border-top-right-radius: 12rem;
+}
+
+
+.individual-profile{
+    list-style: none;
+}
+.individual-profile-logo{
+    border-radius: 50rem;
+    width: 10rem;
+    border: 2px solid var(--primary);
+}
+.border-spacer{
+    border-top: 2px solid var(--primary) !important;
+}
+
+.wwe {
+    width: 380px !important;
+}

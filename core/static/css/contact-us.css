@@ -1,0 +1,71 @@
+/* main */
+.contacts {
+	background: url("../img/Vector4.png") no-repeat center center;
+	background-size: cover;
+	padding: 50px 0;
+	text-align: center;
+}
+
+.contacts h1 {
+	font-size: 60px;
+	margin-top: 200px;
+	margin-bottom: 50px;
+}
+
+.cards {
+    transition: 0.5s;
+}
+
+.cards:hover {
+	transform: translateY(-20px);
+
+}
+
+.cards2 {
+	background: url("../img/telegram.png") no-repeat;
+}
+
+.cards3 {
+	background: url("../img/telephon.png") no-repeat;
+}
+
+.cards1 {
+	background: url("../img/g-mail.png") no-repeat;
+}
+
+.cards {
+	background-position: center;
+	width: 25rem;
+	height: 21rem;
+	gap: 1rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.content {
+	margin-top: 10rem;
+	width: 77%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.under-contact-cards {
+	padding-bottom: 15rem !important;
+}
+
+.icons {
+	display: flex;
+	justify-content: center;
+	margin-top: 3rem;
+}
+
+.icons .row .d-flex {
+	gap: 2rem;
+}
+
+/* footer */
+.footer-alone {
+	background-color: var(--primary);
+}

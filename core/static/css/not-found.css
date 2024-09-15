@@ -1,0 +1,17 @@
+.navbar-brand:hover {
+    color: var(--secondary) !important;
+}
+
+/* main */
+.bg-back-photo{
+    background: url("../img/not-found.jpg") no-repeat;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+}
+.fzf{
+    font-weight: 900;
+    font-size: 200px;
+    font-family: "Peyda-regular" !important;
+}
