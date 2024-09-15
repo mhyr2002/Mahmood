@@ -1,0 +1,44 @@
+version: "3.9"
+
+# services: این بخش مشخص می‌کند که چه سرویس‌هایی باید ساخته شوند.
+services:
+# backend: نام سرویسی است که در اینجا تعریف شده است. می‌توان چندین سرویس را در یک فایل docker-compose.yml تعریف کرد.
+  backend3:
+  # build: .: این خط به داکر کامپوز می‌گوید که برای ساخت تصویر مربوط به سرویس بک‌اند، از داکرفایل موجود در همان دایرکتوری استفاده کند.
+    build: .
+    container_name: backend3
+    # command: python manage.py runserver 0.0.0.0:8000: این خط دستور اجرایی برای سرویس بک‌اند را مشخص می‌کند. در اینجا، دستور python manage.py runserver 0.0.0.0:8000 برای اجرای برنامه Django با استفاده از سرور داخلی Django استفاده می‌شود.
+    command: python manage.py runserver 0.0.0.0:8000 
+    # volumes: - ./core:/app: این خط یک mount point (نقطه اتصال) بین سیستم میزبان و کانتینر را تعریف می‌کند. در اینجا، دایرکتوری ./core از سیستم میزبان به دایرکتوری /app در کانتینر متصل می‌شود. این به معنای اشتراک‌گذاری کد برنامه بین سیستم میزبان و کانتینر است.
+    volumes:
+      - ./core:/app
+    # ports: - "8000:8000": این خط پورت‌های کانتینر را به پورت‌های سیستم میزبان نگاشت می‌کند. در اینجا، پورت 8000 از سیستم میزبان به پورت 8000 در کانتینر متصل می‌شود. این به معنای دسترسی به برنامه بک‌اند از طریق پورت 8000 در سیستم میزبان است.
+    ports:
+    - "8000:8000"
+    environment:
+      - SECRET_KEY=test
+      - DEBUG=True
+
+
+  smtp4dev:
+      image: rnwood/smtp4dev:v3
+      restart: always
+      ports:
+        # Change the number before : to the port the web interface should be accessible on
+        - '5000:80'
+        # Change the number before : to the port the SMTP server should be accessible on
+        - '25:25'
+        # Change the number before : to the port the IMAP server should be accessible on
+        - '143:143'
+      volumes:
+        # This is where smtp4dev stores the database..
+          - smtp4dev-data:/smtp4dev
+      environment:
+        #Specifies the URLs the web UI will use inside the container.
+        - ServerOptions__Urls=http://*:80
+
+        #Specifies the server hostname. Used in auto-generated TLS certificate if enabled.
+        - ServerOptions__HostName=smtp4dev
+
+volumes:
+  smtp4dev-data:
