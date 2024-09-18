@@ -88,12 +88,12 @@
 
 					{% if not request.user.is_authenticated %}
 					<!-- login -->
-					<li class="nav-item" style="margin-right: 10px;">
+					<li class="nav-item">
 						<a class="login btn bg-color-primary secondary-color rounded-5" id="login"
 							href="{% url 'accounts:login' %}">Login</a>
 					</li>
 					<!-- signup -->
-					<li class="nav-item">
+					<li class="nav-item ps-2">
 						<a class="login btn bg-color-primary secondary-color rounded-5" id="login"
 							href="{% url 'accounts:signup' %}">SignUp</a>
 					</li>
@@ -209,7 +209,7 @@
 					<!-- login -->
 					<li class="ham-items">
 						<a class="login ham-link btn bg-color-primary secondary-color rounded-5" id="login"
-							href="login.html">Login</a>
+							href="{% url 'accounts:login' %}">Login</a>
 					</li>
 
 					<!-- page links -->
@@ -523,7 +523,7 @@
                                             <label for="floatingInput">Email address</label>
                                         </div>
                                         <div class="form-floating">
-                                            <textarea class="form-control rounded-5 border-trans-primary" placeholder="Leave your ticket massage here" name="message" id="floatingTextarea2" style="height: 180px; resize: none;"></textarea>
+                                            <textarea class="form-control rounded-4 border-trans-primary" placeholder="Leave your ticket massage here" name="message" id="floatingTextarea2" style="height: 180px; resize: none;"></textarea>
                                             <label for="floatingTextarea2">Write your question here</label>
                                         </div>
                                         

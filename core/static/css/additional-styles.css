@@ -17,6 +17,10 @@ body {
     color: var(--primary) !important;
 }
 
+.form-floating label::after {
+    background-color: transparent !important;
+}
+
 /* header */
 nav {
     backdrop-filter: blur(3px);

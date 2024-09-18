@@ -33,7 +33,7 @@
 						<a class="nav-link fw-bold fst-italic active" href="blog.html">Blog</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">About-Us</a>
+						<a class="nav-link" href="{%url 'website:about'%}">About-Us</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{% url 'website:contact' %}">Contact-Us</a>
@@ -202,7 +202,7 @@
 					<!-- login -->
 					<li class="ham-items d-none">
 						<a class="login ham-link btn bg-color-secondary primary-color rounded-5" id="login"
-							href="login.html">Login</a>
+							href="{% url 'accounts:login' %}">Login</a>
 					</li>
 
 					<!-- page links -->
