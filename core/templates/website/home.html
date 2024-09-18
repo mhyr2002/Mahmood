@@ -168,6 +168,7 @@
 					</div>
 
 					<!-- profile dropdown -->
+					{% if request.user.is_authenticated %}
 					<li class="ham-items nav-items mt-3">
 						<div class="dropdown-center nav-items">
 
@@ -205,11 +206,17 @@
 							</ul>
 						</div>
 					</li>
+					{% endif %}
 
 					<!-- login -->
 					<li class="ham-items">
-						<a class="login ham-link btn bg-color-primary secondary-color rounded-5" id="login"
+						<a class="login ham-link btn bg-color-primary secondary-color rounded-5 py-1 px-2" id="login"
 							href="{% url 'accounts:login' %}">Login</a>
+					</li>
+					<!-- signup -->
+					<li class="ham-item">
+						<a class="login ham-link btn bg-color-primary secondary-color rounded-5 py-1 px-2" id="login"
+							href="{% url 'accounts:signup' %}">SignUp</a>
 					</li>
 
 					<!-- page links -->
