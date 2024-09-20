@@ -1,13 +1,14 @@
 /* main */
-.blog-page{
-    margin-top: 10rem;
-}
-
 
 .blog-page-starting-img{
     width: 100%;
     height: auto;
-    border-top-right-radius: 12rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    border-top-right-radius: 10rem !important;
 }
 
 
@@ -15,8 +16,7 @@
     list-style: none;
 }
 .individual-profile-logo{
-    border-radius: 50rem;
-    width: 10rem;
+    width: 80%;
     border: 2px solid var(--primary);
 }
 .border-spacer{
@@ -25,4 +25,20 @@
 
 .wwe {
     width: 380px !important;
+}
+
+
+.text-blog-part1 img {
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+
+
+@media screen and (max-width: 576px) {
+    html {
+        font-size: 0.5rem !important;
+    }
 }

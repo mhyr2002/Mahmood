@@ -270,7 +270,7 @@
 	</header>
     
 	<main>
-        <section class="blog-page ">
+        <section class="blog-page pt-9">
 			<div class="container">
 
 				<div class="starting-blog-page">
@@ -285,22 +285,22 @@
 							<!-- col-12 col-sm-6 -->
 							<div class="d-flex">
 	
-								<li class="col-12 col-sm-2">
+								<li class="col-3">
 									<a href="#" class="fs-3 text-decoration-none primary-color fw-bolder">
-										<img src="../img/blog-page-starting-individual-profile-logo.png" alt="individual-profile-logo" class="individual-profile-logo">
+										<img src="{%static 'img/blog-page-starting-individual-profile-logo.png' %}" alt="individual-profile-logo" class="individual-profile-logo rounded-circle">
 									</a>
 								</li>
 								
-								<li class="d-flex align-items-center col-12 col-sm-3">
+								<li class="justify-content-start align-content-center col-4">
 									<a href="#" class="fs-3 text-decoration-none primary-color fw-bolder">
 										<p class="individual-profile-text">{{post.author}}</p>
-										<figcaption class="individual-profile-text-figcaption figure-caption text-center fw-normal fs-5">February 9, 2015</figcaption>
+										<figcaption class="individual-profile-text-figcaption figure-caption fw-normal fs-5">{{post.published_date}}</figcaption>
 									</a>
 								</li>
 	
-								<div class="d-flex align-items-center justify-content-end col-12 col-sm-7">
+								<div class="d-flex align-items-center justify-content-end col-5">
 									{%for cat in post.category.all%}
-									<button type="submit" class="btn bg-transparent primary-color border-trans-primary fs-3 fw-bold m-3 p-3 px-4 rounded-pill">{{cat.name}} {%if not forloop.last %},{%endif%}</button>
+									<button type="submit" class="btn primary-color border-trans-primary fs-3 fw-bold m-md-3 p-md-3 px-md-4 rounded-pill">{{cat.name}} {%if not forloop.last %},{%endif%}</button>
 									{%endfor%}
 
 								</div>
@@ -313,104 +313,98 @@
 				</div>
 				<div class="my-5">
 	
-						<div class="text-blog-part1">
-							<h2 class="my-3 fw-bolder">{{post.title}}</h2>
-							<p class="fs-4">
-								{{post.content|safe}}
-								</p>
-						</div>
-						
-										
+					<div class="text-blog-part1">
+						<h2 class="my-3 fw-bolder">{{post.title}}</h2>
+						<p class="fs-4">
+							{{post.content|safe}}
+						</p>
+					</div>
+
 				</div>
 	
 				<div class="border-spacer"></div>
 	
 				<h2 class="fw-bolder my-4">Similar content</h2>
-
-				<!-- <div class="d-flex  my-3"> -->
-					
-					<div class="row mt-5">
-						<div class="d-flex justify-content-between">
-							<div class="col-md-4 wwe px-0">
-								<div class="text-center py-3 mb-4 ">
-									<a href="" class="text-decoration-none">
-										<div class="py-0">
-											<img class="w-100 rounded-3" src="../img/profile1.jpg" alt="">
-											<div>
-												<p class="card-tilte fw-bold mt-4 primary-color">
-													Lorem ipsum dolor sit.
-												</p>
-												<p class="card-text px-1 text-muted ">
-													Lorem ipsum dolor sit amet,
-													consectetur adipisicing elit.
-													Ratione, eaque? Cumque
-													reprehenderit tempore officiis
-													iste.Lorem ipsum dolor sit amet,
-													consectetur adipisicing elit.
-													Ratione, eaque? Cumque
-													reprehenderit tempore officiis
-													iste.
-												</p>
-											</div>
+				<div class="row mt-5">
+					<div class="d-flex justify-content-between">
+						<div class="col-md-4 wwe px-0">
+							<div class="text-center py-3 mb-4 ">
+								<a href="" class="text-decoration-none">
+									<div class="py-0">
+										<img class="w-100 rounded-3" src="../img/profile1.jpg" alt="">
+										<div>
+											<p class="card-tilte fw-bold mt-4 primary-color">
+												Lorem ipsum dolor sit.
+											</p>
+											<p class="card-text px-1 text-muted ">
+												Lorem ipsum dolor sit amet,
+												consectetur adipisicing elit.
+												Ratione, eaque? Cumque
+												reprehenderit tempore officiis
+												iste.Lorem ipsum dolor sit amet,
+												consectetur adipisicing elit.
+												Ratione, eaque? Cumque
+												reprehenderit tempore officiis
+												iste.
+											</p>
 										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-md-4 wwe px-0">
-								<div class="text-center py-3 mb-4 ">
-									<a href="" class="text-decoration-none">
-										<div class="card-body py-0">
-											<img class="w-100 rounded-3" src="../img/profile1.jpg" alt="">
-											<div>
-												<p class="card-tilte fw-bold mt-4 primary-color">
-													Lorem ipsum dolor sit.
-												</p>
-												<p class="card-text px-1 text-muted ">
-													Lorem ipsum dolor sit amet,
-													consectetur adipisicing elit.
-													Ratione, eaque? Cumque
-													reprehenderit tempore officiis
-													iste.Lorem ipsum dolor sit amet,
-													consectetur adipisicing elit.
-													Ratione, eaque? Cumque
-													reprehenderit tempore officiis
-													iste.
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-md-4 wwe px-0">
-								<div class="text-center py-3 mb-4 ">
-									<a href="" class="text-decoration-none">
-										<div class="card-body py-0">
-											<img class="w-100 rounded-3" src="../img/profile1.jpg" alt="">
-											<div>
-												<p class="card-tilte fw-bold mt-4 primary-color">
-													Lorem ipsum dolor sit.
-												</p>
-												<p class="card-text px-1 text-muted ">
-													Lorem ipsum dolor sit amet,
-													consectetur adipisicing elit.
-													Ratione, eaque? Cumque
-													reprehenderit tempore officiis
-													iste.Lorem ipsum dolor sit amet,
-													consectetur adipisicing elit.
-													Ratione, eaque? Cumque
-													reprehenderit tempore officiis
-													iste.
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
+									</div>
+								</a>
 							</div>
 						</div>
-						
+						<div class="col-md-4 wwe px-0">
+							<div class="text-center py-3 mb-4 ">
+								<a href="" class="text-decoration-none">
+									<div class="card-body py-0">
+										<img class="w-100 rounded-3" src="../img/profile1.jpg" alt="">
+										<div>
+											<p class="card-tilte fw-bold mt-4 primary-color">
+												Lorem ipsum dolor sit.
+											</p>
+											<p class="card-text px-1 text-muted ">
+												Lorem ipsum dolor sit amet,
+												consectetur adipisicing elit.
+												Ratione, eaque? Cumque
+												reprehenderit tempore officiis
+												iste.Lorem ipsum dolor sit amet,
+												consectetur adipisicing elit.
+												Ratione, eaque? Cumque
+												reprehenderit tempore officiis
+												iste.
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="col-md-4 wwe px-0">
+							<div class="text-center py-3 mb-4 ">
+								<a href="" class="text-decoration-none">
+									<div class="card-body py-0">
+										<img class="w-100 rounded-3" src="../img/profile1.jpg" alt="">
+										<div>
+											<p class="card-tilte fw-bold mt-4 primary-color">
+												Lorem ipsum dolor sit.
+											</p>
+											<p class="card-text px-1 text-muted ">
+												Lorem ipsum dolor sit amet,
+												consectetur adipisicing elit.
+												Ratione, eaque? Cumque
+												reprehenderit tempore officiis
+												iste.Lorem ipsum dolor sit amet,
+												consectetur adipisicing elit.
+												Ratione, eaque? Cumque
+												reprehenderit tempore officiis
+												iste.
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
 					</div>
-				<!-- </div> -->
-	
+					
+				</div>
 			</div>
         </section>
     </main>

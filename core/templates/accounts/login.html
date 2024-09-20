@@ -211,8 +211,8 @@
 			<div class="container d-flex text-center justify-content-center">
 				<div class="row justify-content-center align-items-center text-center">
 					<div class="secondary-color">
-						<h3 class="fw-bold pb-5 m-0 welcome">Welcome to</h3>
-						<h3 class="pb-5 m-0 inno">INNOWATER</h3>
+						<h3 class="fw-bold pb-5 m-0 welcome"></h3>
+						<h3 class="pb-5 m-0 inno">Welcome back</h3>
 					</div>
 				</div>
 			</div>
@@ -231,7 +231,7 @@
 											<div class="form-floating mb-3">
 												<!-- <div data-mdb-input-init class="form-outline form-white mb-4"> -->
 													<input type="text" id="typeEmailX" class="form-control border-trans-primary rounded-5 ps-4" placeholder="" name="username" />
-													<label for="typeEmailX" class="ps-4">UserName</label>
+													<label for="typeEmailX" class="ps-4 primary-50-color">UserName</label>
 												  <!-- </div> -->
 							  
 												  
@@ -241,13 +241,19 @@
 											<div class="form-floating mb-3">
 												<!-- <div data-mdb-input-init class="form-outline form-white mb-4"> -->
 													<input type="password" id="typePasswordX" class="form-control border-trans-primary rounded-5 ps-4" placeholder="" name="password" />
-													<label for="typePasswordX" class="ps-4">Password</label>
+													<label for="typePasswordX" class="ps-4 primary-50-color">Password</label>
 												  <!-- </div> -->
 											</div>
 										</div>
 										<div class="col-12">
 											<div class="d-flex align-items-center gap-2 justify-content-between px-4">
-
+												<div class="form-check">
+													<input class="form-check-input me-2 input-styles" type="checkbox"
+														value="" name="rememberMe" id="rememberMe" />
+													<label class="form-check-label text-nowrap" for="rememberMe">
+														Remember Me
+													</label>
+												</div>
 
 												<a href="{% url 'accounts:password_reset_request' %}" class="btn text-nowrap text-decoration-none primary-color">Forgot password?</a>				
 
