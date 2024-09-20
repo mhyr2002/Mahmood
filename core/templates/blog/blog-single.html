@@ -65,7 +65,7 @@
 							<div id="search-box"
 								class="dropdown-menu search-style shadow p-3 dropdown-menu-end search-box"
 								aria-labelledby="searchDropdown" style="width: 400px">
-								<form class="bg-transparent border-3 border-white" id="searchForm" action="your_search_url"
+								<form class="bg-transparent border-3 border-white" id="searchForm" action="{% url 'blog:search' %}"
 									method="GET">
 									<div class="input-group">
 										<input type="text"
@@ -285,7 +285,7 @@
 							<!-- col-12 col-sm-6 -->
 							<div class="d-flex">
 	
-								<li class="col-3">
+								<li class="col-3 col-md-2">
 									<a href="#" class="fs-3 text-decoration-none primary-color fw-bolder">
 										<img src="{%static 'img/blog-page-starting-individual-profile-logo.png' %}" alt="individual-profile-logo" class="individual-profile-logo rounded-circle">
 									</a>
@@ -298,9 +298,9 @@
 									</a>
 								</li>
 	
-								<div class="d-flex align-items-center justify-content-end col-5">
+								<div class="d-flex align-items-center justify-content-end gap-2 col-5 col-md-6">
 									{%for cat in post.category.all%}
-									<button type="submit" class="btn primary-color border-trans-primary fs-3 fw-bold m-md-3 p-md-3 px-md-4 rounded-pill">{{cat.name}} {%if not forloop.last %},{%endif%}</button>
+									<button type="submit" class="btn primary-color border-trans-primary fs-5 fw-bold p-lg-2 px-lg-3 rounded-pill">{{cat.name}}</button>
 									{%endfor%}
 
 								</div>
