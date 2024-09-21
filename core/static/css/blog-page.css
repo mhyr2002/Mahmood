@@ -1,7 +1,7 @@
 /* main */
 
-.blog-page-starting-img{
-    width: 100%;
+.blog-banner{
+    width: 50%;
     height: auto;
     border-radius: 1rem;
     -webkit-border-radius: 1rem;
@@ -43,10 +43,10 @@
     }
 }
 
-.container {
+/* .container {
     display: flex;
     flex-wrap: wrap;
-  }
+  } */
   
   .image {
     flex: 1;
