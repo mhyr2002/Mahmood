@@ -53,20 +53,10 @@
     background-color: var(--primary-50) !important;
 }
 
-.card-custom {
-    transition: transform 0.2s;
-    -webkit-transition: transform 0.2s;
-    -moz-transition: transform 0.2s;
-    -ms-transition: transform 0.2s;
-    -o-transition: transform 0.2s;
-}
-
-.card-custom:hover {
-    transform: scale(1.05);
-    -webkit-transform: scale(1.05);
-    -moz-transform: scale(1.05);
-    -ms-transform: scale(1.05);
-    -o-transform: scale(1.05);
+.view-counted {
+    font-size: 1rem;
+    top: 0%;
+    left: 0%;
 }
 
 .page-link {
@@ -91,13 +81,28 @@
     .selected-intro+a{
         margin-right: 0;
     }
+    .view-counted {
+        font-size: 0.75rem;
+        top: 0%;
+        left: 0%;
+    }
 }
 @media screen and (max-width: 768px) {
     .first-other {
         margin-bottom: 2rem !important;
     }
+    .view-counted {
+        font-size: 1rem;
+        top: 0%;
+        left: 0%;
+    }
 }
 
+@media screen and (max-width: 576px) {
+    .view-counted {
+        font-size: 1.5rem !important;
+    }
+}
 
 
 @media screen and (min-width:768px) {

@@ -298,8 +298,9 @@
                     <div class="col-md-4">
                         <div class="text-center shadow rounded-4 p-3 mb-4 ">
                             <a href="{% url 'blog:single' pid=post.id  %}" class="text-decoration-none">
-                                <div class="py-0">
+                                <div class="py-0 position-relative">
                                     <img class="w-100 rounded-3" src="{{post.image.url}}" alt="">
+                                    <p class="view-counted position-absolute bg-color-secondary primary-color p-2 rounded-bottom-3 rounded-start-0">{{post.counted_view}} views</p>
                                     <div>
                                         <p class="fw-bold mt-4 primary-color">
                                             {{post.title}}

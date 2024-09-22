@@ -261,6 +261,15 @@ nav .navbar-nav .nav-item .nav-link {
 }
 
 
+/* blog view */
+.view-counted {
+    font-size: 1rem;
+    top: 0%;
+    left: 0%;
+}
+
+
+
 /* footer */
 .footer {
     background: url("../img/footer-bg.png") no-repeat;
@@ -350,6 +359,11 @@ nav .navbar-nav .nav-item .nav-link {
 }
 
 @media screen and (max-width: 992px) {
+    .view-counted {
+        font-size: 0.75rem;
+        top: 0%;
+        left: 0%;
+    }
     nav .navbar-nav {
         display: none;
     }
@@ -387,6 +401,11 @@ nav .navbar-nav .nav-item .nav-link {
 }
 
 @media screen and (max-width: 768px) {
+    .view-counted {
+        font-size: 1rem;
+        top: 0%;
+        left: 0%;
+    }
     .nav-items {
         display: block;
     }
@@ -417,6 +436,12 @@ nav .navbar-nav .nav-item .nav-link {
 }
 
 @media screen and (max-width: 576px) {
+    html {
+        font-size: 0.65rem !important;
+    }
+    .view-counted {
+        font-size: 1.5rem !important;
+    }
     .navbar-brand {
         margin-left: 2rem;
     }
