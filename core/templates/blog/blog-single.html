@@ -331,64 +331,29 @@
 	
 				<h2 class="fw-bolder my-4">Similar content</h2>
 				<div class="row mt-5">
+						{%for spost in similar_post %}
+						<div class="col-md-4">
+                            <div class="text-center shadow rounded-4 result-blog p-3 mb-4 ">
+									<a href="{% url 'blog:single' pid=spost.id  %}" class="text-decoration-none">
+                                    <div class="py-0 position-relative">
+                                        <img class="w-100 rounded-3" src="{{spost.image.url}}" alt="">
+                                        <p class="view-counted position-absolute bg-color-secondary primary-color p-2 rounded-bottom-3 rounded-start-0">{{spost.counted_view}}</p>
+                                        <div>
+                                            <p class="fw-bold mt-4 primary-color">
+												{{spost.title}}
+                                            </p>
+                                            <div class="author d-flex justify-content-between px-3">
+                                                <p class="primary-50-color">by <span class="primary-color">{{spost.author}}</span></p>
+                                                <p class="primary-50-color">{{spost.published_date|date:"d M Y"}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+						{%endfor%}
 					<div class="d-flex justify-content-center gap-3">
-						<div class="col-md-4">
-                            <div class="text-center shadow rounded-4 result-blog p-3 mb-4 ">
-                                <a href="" class="text-decoration-none">
-                                    <div class="py-0 position-relative">
-                                        <img class="w-100 rounded-3" src="{%static 'img/profile1.jpg' %}" alt="">
-                                        <p class="view-counted position-absolute bg-color-secondary primary-color p-2 rounded-bottom-3 rounded-start-0">100 view</p>
-                                        <div>
-                                            <p class="fw-bold mt-4 primary-color">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, sunt.
-                                            </p>
-                                            <div class="author d-flex justify-content-between px-3">
-                                                <p class="primary-50-color">by <span class="primary-color">author name</span></p>
-                                                <p class="primary-50-color">1 week</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-						<div class="col-md-4">
-                            <div class="text-center shadow rounded-4 result-blog p-3 mb-4 ">
-                                <a href="" class="text-decoration-none">
-                                    <div class="py-0 position-relative">
-                                        <img class="w-100 rounded-3" src="{%static 'img/profile1.jpg' %}" alt="">
-                                        <p class="view-counted position-absolute bg-color-secondary primary-color p-2 rounded-bottom-3 rounded-start-0">100 view</p>
-                                        <div>
-                                            <p class="fw-bold mt-4 primary-color">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, sunt.
-                                            </p>
-                                            <div class="author d-flex justify-content-between px-3">
-                                                <p class="primary-50-color">by <span class="primary-color">author name</span></p>
-                                                <p class="primary-50-color">1 week</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-						<div class="col-md-4">
-                            <div class="text-center shadow rounded-4 result-blog p-3 mb-4 ">
-                                <a href="" class="text-decoration-none">
-                                    <div class="py-0 position-relative">
-                                        <img class="w-100 rounded-3" src="{%static 'img/profile1.jpg' %}" alt="">
-                                        <p class="view-counted position-absolute bg-color-secondary primary-color p-2 rounded-bottom-3 rounded-start-0">100 view</p>
-                                        <div>
-                                            <p class="fw-bold mt-4 primary-color">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, sunt.
-                                            </p>
-                                            <div class="author d-flex justify-content-between px-3">
-                                                <p class="primary-50-color">by <span class="primary-color">author name</span></p>
-                                                <p class="primary-50-color">1 week</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+						
 					</div>
 				</div>
 			</div>

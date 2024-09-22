@@ -20,9 +20,7 @@ def about_view(request):
 def contact_view(request):
     return render(request,'website/contact-us.html')
 
-"""functions for 404 page"""
-# def error_404(request,ecxeption):
-#     return render(request,'not-found.html')
+
 
 """ funcions for receiving form from newsletter"""
 def newsletter_view(request):

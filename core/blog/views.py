@@ -1,10 +1,13 @@
 from django.shortcuts import render,get_object_or_404
 from blog.models import Post,Comment
+from blog.models import Category
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 from blog.forms import CommentForm
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.db.models import Q
+
 # from hitcount.views import HitCountDetailView
 # from hitcount.models import HitCount
  
@@ -44,11 +47,16 @@ def blog_single(request, pid):
 
     posts = Post.objects.filter(status=1)
     post = get_object_or_404(posts, pk=pid)
+    categories = post.category.all()
+    similar_post = posts.filter(category__in=categories).exclude(pk=post.pk)
     post.counted_view += 1
     post.save() 
     comments = Comment.objects.filter(post=post.id, approved=True)
     form = CommentForm()
-
+    
+    print(posts)
+    print(similar_post)
+    print(post)
     # Create a HitCount object for the post
     # hit_count, created = HitCount.objects.get_or_create(content_object=post)
 
@@ -56,6 +64,7 @@ def blog_single(request, pid):
         'post': post,
         'comments': comments,
         'form': form,
+        'similar_post' :similar_post,
         
     }
 
@@ -67,11 +76,23 @@ def blog_single(request, pid):
         else:
             return HttpResponseRedirect(reverse('accounts:login'))
 
+
+
+
 """funciton for search in content of blog"""
 def blog_search (request): 
     posts = Post.objects.filter(status = 1)
     if request.method == 'GET':
         if s:= request.GET.get('search'):
-            posts = posts.filter(content__contains=s)
+            posts = posts.filter(Q(title__icontains=s) | Q(content__icontains=s))
+    posts = Paginator(posts,6)
+
+    try :
+        page_number = request.GET.get('page')
+        posts = posts.get_page(page_number)
+    except PageNotAnInteger:
+        posts = posts.get_page(1)
+    except EmptyPage:
+        posts = posts.get_page(1)
     context =  {'posts' :posts}
-    return render(request,'blog/blog-home.html',context)
+    return render(request,'blog/search-result.html',context)
