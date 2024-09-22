@@ -1,0 +1,122 @@
+/* navigation */
+
+.search-style {
+    margin-top: 0.4rem !important;
+    background-color: var(--primary) !important;
+}
+
+/* main */
+
+.eyes{
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+    border: 3px solid var(--primary);
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.pupil{
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-50);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 8px solid var(--primary-50);
+}
+
+.no-result {
+    min-height: 80vh;
+}
+
+
+.p-12 {
+    padding: 12px;
+}
+
+.view-counted {
+    font-size: 1rem;
+    top: 0%;
+    left: 0%;
+}
+
+/* .result-blog {
+    transition: transform 0.2s;
+    -webkit-transition: transform 0.2s;
+    -moz-transition: transform 0.2s;
+    -ms-transition: transform 0.2s;
+    -o-transition: transform 0.2s;
+}
+
+.result-blog:hover {
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+} */
+
+.page-link {
+    color: var(--primary) !important;
+}
+
+.active>.page-link,
+.page-link.active {
+    color: var(--secondary) !important;
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+/* footer */
+.footer-alone {
+	background-color: var(--primary);
+}
+
+@media screen and (max-width: 992px) {
+    .view-counted {
+        font-size: 0.75rem;
+        top: 0%;
+        left: 0%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .view-counted {
+        font-size: 1rem;
+        top: 0%;
+        left: 0%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .view-counted {
+        font-size: 1.5rem !important;
+    }
+
+    .eyes{
+        width: 100px;
+        height: 100px;
+        background-color: #fff;
+        border: 3px solid var(--primary);
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .pupil{
+        width: 20px;
+        height: 20px;
+        background-color: var(--primary-50);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 6px solid var(--primary-50);
+    }
+    
+}

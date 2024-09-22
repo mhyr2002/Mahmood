@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../css/dashboard.css" />
+	<link rel="stylesheet" href="../css/material.css" />
+	<link rel="stylesheet" href="../css/additional-styles.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+	<script src="../js/bootstrap.bundle.min.js"></script>
+	<title>InnoWater-Dashboard</title>
+</head>
+
+<body>
+	<header>
+		<nav class="navbar navbar-expand-md fixed-top mt-5 mx-5 mw-75 rounded-5 shadow">
+			<div class="container">
+				<a class="navbar-brand zoom" href="{% url 'website:home' %}">InnoWater</a>
+
+				<!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button> -->
+				<!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+				</div> -->
+				<ul class="navbar-nav nav-links primary-color mx-lg-auto mb-2 mb-lg-0 justify-content-around text-nowrap"
+					style="width: 35vw">
+					<li class="nav-item">
+						<a class="nav-link" aria-current="page" href="{% url 'website:home' %}">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{%url 'shop:product_list' %}">Shop</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="blog.html">Blog</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="about-us.html">About-Us</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'website:contact' %}">Contact-Us</a>
+					</li>
+				</ul>
+
+				<ul class="navbar-nav mb-0 justify-content-between align-items-center">
+					<!-- search -->
+					<li class="nav-item">
+						<div class="dropdown">
+							<button id="searchDropdown" class="btn" type="button" data-bs-toggle="dropdown"
+								data-bs-auto-close="false" aria-expanded="false">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<g clip-path="url(#clip0_2497_26400)">
+										<path class="search-icon"
+											d="M21 21L16.6569 16.6569M16.6569 16.6569C18.1046 15.2091 19 13.2091 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19C13.2091 19 15.2091 18.1046 16.6569 16.6569Z"
+											stroke="#010c8e" stroke-width="2" stroke-linecap="round"
+											stroke-linejoin="round" />
+									</g>
+									<defs>
+										<clipPath id="clip0_2497_26400">
+											<rect width="24" height="24" fill="#eff3ff" />
+										</clipPath>
+									</defs>
+								</svg>
+							</button>
+							<div id="search-box"
+								class="dropdown-menu search-style shadow p-3 dropdown-menu-end search-box"
+								aria-labelledby="searchDropdown" style="width: 400px">
+								<form class="bg-trans border-3 border-white" id="searchForm" action="your_search_url"
+									method="GET">
+									<div class="input-group">
+										<input type="text"
+											class="form-control bg-color-bg primary-color border-3 border-white"
+											name="search" placeholder="Write Here" aria-label="Search" />
+										<a href="">
+											<button
+												class="btn search-btn bg-color-primary white-color rounded-start-0 shadow border-3 border-white"
+												type="submit">
+												Search
+											</button>
+										</a>
+									</div>
+								</form>
+							</div>
+						</div>
+					</li>
+
+					<!-- cart -->
+					<li class="nav-item me-3">
+						<a class="nav-link position-relative" aria-current="page" href="{% url 'cart:cart_detail' %}"><svg width="24" height="24"
+								viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path class="cart-shop" fill-rule="evenodd" clip-rule="evenodd"
+									d="M23.3873 5.39885C22.911 4.85671 22.2186 4.5449 21.4902 4.5449H8.59652C8.09973 4.5449 7.69654 4.94175 7.69654 5.43074C7.69654 5.91972 8.09973 6.31658 8.59652 6.31658H21.4902C21.7722 6.31658 21.9474 6.46776 22.0266 6.55753C22.1058 6.64848 22.233 6.841 22.1922 7.11502L21.0534 14.862C20.9634 15.4691 20.4258 15.9274 19.8018 15.9274H6.70897C6.04538 15.9274 5.5042 15.4372 5.449 14.7876L4.29343 1.23775C4.25983 0.836172 3.95384 0.506639 3.55065 0.438134L1.05351 0.0117488C0.557921 -0.0662053 0.097133 0.251517 0.0131351 0.734596C-0.0708627 1.21649 0.256729 1.67477 0.746317 1.75863L2.55827 2.0669L3.65504 14.9352C3.78944 16.5109 5.10221 17.6991 6.70897 17.6991H19.8018C21.315 17.6991 22.6182 16.5888 22.8342 15.1159L23.9741 7.36896C24.0785 6.65793 23.8637 5.94098 23.3873 5.39885ZM4.68955 21.3605C4.68955 20.3743 5.50553 19.5711 6.50751 19.5711C7.50948 19.5711 8.32426 20.3743 8.32426 21.3605C8.32426 22.3468 7.50948 23.1488 6.50751 23.1488C5.50553 23.1488 4.68955 22.3468 4.68955 21.3605ZM18.1928 21.3605C18.1928 20.3743 19.0076 19.5711 20.0095 19.5711C21.0115 19.5711 21.8275 20.3743 21.8275 21.3605C21.8275 22.3468 21.0115 23.1488 20.0095 23.1488C19.0076 23.1488 18.1928 22.3468 18.1928 21.3605ZM18.7786 9.79687C18.7786 10.2859 18.3755 10.6827 17.8787 10.6827H14.5511C14.0532 10.6827 13.6512 10.2859 13.6512 9.79687C13.6512 9.30789 14.0532 8.91103 14.5511 8.91103H17.8787C18.3755 8.91103 18.7786 9.30789 18.7786 9.79687Z"
+									fill="#010c8e" />
+							</svg>
+                            <span class="badge start-50 top-0 cart-badge">
+								2
+							</span>
+						</a>
+					</li>
+
+					<!-- login -->
+					<li class="nav-item">
+						<a class="login btn bg-color-primary white-color rounded-5 " id="login"
+							href="login.html">Login</a>
+					</li>
+
+					<!-- profile -->
+					<li class="user-dropdown">
+						<div class="dropdown-center">
+							<div class="d-flex align-items-center">
+								<button id="UserDropdown" class="btn" type="button" data-bs-toggle="dropdown"
+									data-bs-auto-close="true" aria-expanded="false">
+									<svg class="me-2" width="3" height="27" viewBox="0 0 3 27" fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<path class="person" d="M1.54199 1.10056L1.54199 38.1397" stroke="#010c8e"
+											stroke-width="2" stroke-linecap="round" />
+									</svg>
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<path class="spacer"
+											d="M20 21C20 18.2386 16.4183 16 12 16C7.58172 16 4 18.2386 4 21M12 13C9.23858 13 7 10.7614 7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8C17 10.7614 14.7614 13 12 13Z"
+											stroke="#010c8e" stroke-width="2" stroke-linecap="round"
+											stroke-linejoin="round" />
+									</svg>
+								</button>
+							</div>
+
+							<ul class="dropdown-menu profile-dropdown p-3 dropdown-menu-end"
+								aria-labelledby="UserDropdown">
+								<li>
+									<a class="dropdown-item d-flex align-items-center justify-content-between" href="#">
+										<img class="profile-avatar" src="{% static 'img/avatar/crocodile1.png' %}" alt="" />
+										<p class="primary-color profile-name ms-3 mb-0">
+											matin94
+										</p>
+									</a>
+								</li>
+
+								<li>
+									<hr class="dropdown-divider" />
+								</li>
+
+								<li>
+									<a class="primary-color dropdown-item" href="#">Orders</a>
+								</li>
+								<li>
+									<a class="primary-color dropdown-item" href="#">Tickets</a>
+								</li>
+								<li>
+									<a class="primary-color dropdown-item" href="#">Acount Details</a>
+								</li>
+
+								<li>
+									<hr class="dropdown-divider" />
+								</li>
+
+								<li>
+									<a class="primary-color dropdown-item" href="#">Log Out</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+
+				<div class="hamberger">
+					<i class="fa fa-bars" id="att" aria-hidden="true" onclick="OpenHam()"></i>
+				</div>
+				<div class="hamberger-closed d-none">
+					<i class="fa fa-times" id="att" aria-hidden="true" onclick="OpenHam()"></i>
+				</div>
+			</div>
+		</nav>
+
+		<div id="ham-menu">
+			<div class="ham-container">
+				<ul class="ham-items mb-0 container">
+					<div class="hamberger-closed">
+						<i class="fa fa-times" id="att" aria-hidden="true" onclick="OpenHam()"></i>
+					</div>
+
+					<!-- profile dropdown -->
+					<li class="ham-items nav-items mt-3">
+						<div class="dropdown-center nav-items">
+
+							<button id="UserDropdown" class="btn nav-items" type="button" data-bs-toggle="dropdown"
+								data-bs-auto-close="true" aria-expanded="false">
+								<!-- <svg class="me-2 nav-items" width="3" height="27" viewBox="0 0 3 27" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="spacer" d="M1.54199 1.10056L1.54199 38.1397" stroke="#010c8e" stroke-width="2" stroke-linecap="round"/></svg> -->
+								<svg class="nav-items" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path class="person"
+										d="M20 21C20 18.2386 16.4183 16 12 16C7.58172 16 4 18.2386 4 21M12 13C9.23858 13 7 10.7614 7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8C17 10.7614 14.7614 13 12 13Z"
+										stroke="#010c8e" stroke-width="2" stroke-linecap="round"
+										stroke-linejoin="round" />
+								</svg>
+							</button>
+
+
+							<ul class="dropdown-menu ham-profile-dropdown p-3" aria-labelledby="UserDropdown">
+								<li>
+									<a class="dropdown-item d-flex align-items-center justify-content-between" href="#">
+										<img class="profile-avatar" src="{% static 'img/avatar/crocodile1.png' %}" alt="" />
+										<p class="primary-color profile-name ms-3 mb-0">
+											matin94
+										</p>
+									</a>
+								</li>
+
+								<li>
+									<hr class="dropdown-divider" />
+								</li>
+
+								<li>
+									<a class="primary-color dropdown-item" href="#">Orders</a>
+								</li>
+								<li>
+									<a class="primary-color dropdown-item" href="#">Tickets</a>
+								</li>
+								<li>
+									<a class="primary-color dropdown-item" href="#">Acount Details</a>
+								</li>
+
+								<li>
+									<hr class="dropdown-divider" />
+								</li>
+
+								<li>
+									<a class="primary-color dropdown-item" href="#">Log Out</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+
+					<!-- login -->
+					<li class="ham-items d-none">
+						<a class="login ham-link btn bg-color-primary white-color rounded-5" id="login"
+							href="login.html">Login</a>
+					</li>
+
+					<!-- page links -->
+					<li class="ham-items">
+						<a class="ham-link" aria-current="page" href="{% url 'website:home' %}">Home</a>
+					</li>
+					<li class="ham-items">
+						<a class="ham-link" href="{%url 'shop:product_list' %}">Shop</a>
+					</li>
+					<li class="ham-items">
+						<a class="ham-link" href="blog.html">Blog</a>
+					</li>
+					<li class="ham-items">
+						<a class="ham-link" href="#">About-Us</a>
+					</li>
+					<li class="ham-items">
+						<a class="ham-link" href="{% url 'website:contact' %}">Contact-Us</a>
+					</li>
+
+					<!-- search -->
+					<li class="ham-items">
+						<button id="search-btn" type="button" class="btn" data-bs-toggle="modal"
+							data-bs-target="#searchModal" onclick="opacity()">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<g clip-path="url(#clip0_2497_26400)">
+									<path class="search-icon"
+										d="M21 21L16.6569 16.6569M16.6569 16.6569C18.1046 15.2091 19 13.2091 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19C13.2091 19 15.2091 18.1046 16.6569 16.6569Z"
+										stroke="#010c8e" stroke-width="2" stroke-linecap="round"
+										stroke-linejoin="round" />
+								</g>
+								<defs>
+									<clipPath id="clip0_2497_26400">
+										<rect width="24" height="24" fill="#eff3ff" />
+									</clipPath>
+								</defs>
+							</svg>
+						</button>
+
+						<!-- <div class="dropdown-center">
+							<button id="searchDropdown" class="btn" type="button" data-bs-toggle="dropdown"
+								data-bs-auto-close="false" aria-expanded="false">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<g clip-path="url(#clip0_2497_26400)">
+										<path class="search-icon"
+											d="M21 21L16.6569 16.6569M16.6569 16.6569C18.1046 15.2091 19 13.2091 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19C13.2091 19 15.2091 18.1046 16.6569 16.6569Z"
+											stroke="#010c8e" stroke-width="2" stroke-linecap="round"
+											stroke-linejoin="round" />
+									</g>
+									<defs>
+										<clipPath id="clip0_2497_26400">
+											<rect width="24" height="24" fill="#eff3ff" />
+										</clipPath>
+									</defs>
+								</svg>
+							</button>
+							<div id="search-box"
+								class="dropdown-menu ham-search-style rounded-2 shadow p-2 dropdown-menu-end search-box"
+								aria-labelledby="searchDropdown" style="width: 270px">
+								<form class="bg-trans border-3 border-white" id="searchForm" action="your_search_url"
+									method="GET">
+									<div class="input-group">
+										<input type="text"
+											class="form-control bg-color-bg primary-color border-3 border-white"
+											name="search" placeholder="Write Here" aria-label="Search" />
+										<a href="">
+											<button
+												class="btn search-btn bg-color-primary white-color rounded-start-0 shadow border-3 border-white"
+												type="submit">
+												Search
+											</button>
+										</a>
+									</div>
+								</form>
+							</div>
+						</div> -->
+
+
+					</li>
+
+					<!-- cart -->
+					<li class="ham-items">
+						<a class="ham-link" aria-current="page" href="{% url 'cart:cart_detail' %}"><svg width="24" height="24"
+								viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path class="cart-shop" fill-rule="evenodd" clip-rule="evenodd"
+									d="M23.3873 5.39885C22.911 4.85671 22.2186 4.5449 21.4902 4.5449H8.59652C8.09973 4.5449 7.69654 4.94175 7.69654 5.43074C7.69654 5.91972 8.09973 6.31658 8.59652 6.31658H21.4902C21.7722 6.31658 21.9474 6.46776 22.0266 6.55753C22.1058 6.64848 22.233 6.841 22.1922 7.11502L21.0534 14.862C20.9634 15.4691 20.4258 15.9274 19.8018 15.9274H6.70897C6.04538 15.9274 5.5042 15.4372 5.449 14.7876L4.29343 1.23775C4.25983 0.836172 3.95384 0.506639 3.55065 0.438134L1.05351 0.0117488C0.557921 -0.0662053 0.097133 0.251517 0.0131351 0.734596C-0.0708627 1.21649 0.256729 1.67477 0.746317 1.75863L2.55827 2.0669L3.65504 14.9352C3.78944 16.5109 5.10221 17.6991 6.70897 17.6991H19.8018C21.315 17.6991 22.6182 16.5888 22.8342 15.1159L23.9741 7.36896C24.0785 6.65793 23.8637 5.94098 23.3873 5.39885ZM4.68955 21.3605C4.68955 20.3743 5.50553 19.5711 6.50751 19.5711C7.50948 19.5711 8.32426 20.3743 8.32426 21.3605C8.32426 22.3468 7.50948 23.1488 6.50751 23.1488C5.50553 23.1488 4.68955 22.3468 4.68955 21.3605ZM18.1928 21.3605C18.1928 20.3743 19.0076 19.5711 20.0095 19.5711C21.0115 19.5711 21.8275 20.3743 21.8275 21.3605C21.8275 22.3468 21.0115 23.1488 20.0095 23.1488C19.0076 23.1488 18.1928 22.3468 18.1928 21.3605ZM18.7786 9.79687C18.7786 10.2859 18.3755 10.6827 17.8787 10.6827H14.5511C14.0532 10.6827 13.6512 10.2859 13.6512 9.79687C13.6512 9.30789 14.0532 8.91103 14.5511 8.91103H17.8787C18.3755 8.91103 18.7786 9.30789 18.7786 9.79687Z"
+									fill="#010c8e" />
+							</svg>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="modal fade search-modal-effect" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+
+					<div class="modal-body">
+						<div class="input-group">
+							<input type="text" class="form-control bg-color-bg primary-color " name="search"
+								placeholder="Write Here" aria-label="Search" />
+							<a href="">
+								<button class="btn search-btn bg-color-primary white-color rounded-start-0 shadow "
+									type="submit">
+									Search
+								</button>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</header>
+
+	<main>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<section class="bg-color-primary shadow rounded-4">
+						<div class="content left-box">
+							<h4 class="secondary-color text-center fs-4 mb-4">matin94</h4>
+							<ul class="nav nav-tabs list-group list-group-flush flex-column px-3" id="myTab"
+								role="tablist">
+
+								<!-- Profile -->
+								<li class="nav-item list-group-item bg-color-primary" role="presentation">
+									<button class="nav-link btn w-100" id="profile-tab" data-bs-toggle="tab"
+										data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
+										aria-selected="true">
+										<svg width="28" height="25" viewBox="0 0 28 24" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M22.8036 21C22.8036 18.2386 18.8925 16 14.0678 16C9.24318 16 5.33203 18.2386 5.33203 21M14.0678 13C11.0524 13 8.60795 10.7614 8.60795 8C8.60795 5.23858 11.0524 3 14.0678 3C17.0832 3 19.5277 5.23858 19.5277 8C19.5277 10.7614 17.0832 13 14.0678 13Z"
+												stroke="#EFF3FF" stroke-width="2" stroke-linecap="round"
+												stroke-linejoin="round" />
+										</svg>
+										<svg width="28" height="25" viewBox="0 0 28 24" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M7 8C7 10.7614 9.23858 13 12 13C14.7614 13 17 10.7614 17 8C17 5.23858 14.7614 3 12 3C9.23858 3 7 5.23858 7 8Z"
+												fill="#EFF3FF" />
+											<path
+												d="M20 21C20 18.2386 16.4183 16 12 16C7.58172 16 4 18.2386 4 21M12 13C9.23858 13 7 10.7614 7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8C17 10.7614 14.7614 13 12 13Z"
+												fill="#EFF3FF" stroke-width="2" stroke-linecap="round"
+												stroke-linejoin="round" />
+										</svg>
+
+										<span class="ul-title ms-2">Profile</span>
+									</button>
+								</li>
+
+								<!-- Purchase -->
+								<li class="nav-item list-group-item bg-color-primary" role="presentation">
+									<button class="nav-link btn w-100" id="purchase-tab" data-bs-toggle="tab"
+										data-bs-target="#purchase" type="button" role="tab" aria-controls="purchase"
+										aria-selected="false">
+										<svg width="28" height="25" viewBox="0 0 28 24" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M2.96484 8H22.9648L21.8775 20.1779C21.7854 21.2094 20.9211 22 19.8855 22H6.04423C5.00859 22 4.14425 21.2094 4.05215 20.1779L2.96484 8Z"
+												stroke="#EFF3FF" stroke-width="2" stroke-linejoin="round" />
+											<path
+												d="M7.96484 11V7.14286C7.96484 4.30254 10.2034 2 12.9648 2C15.7263 2 17.9648 4.30254 17.9648 7.14286V11"
+												stroke="#EFF3FF" stroke-width="2" stroke-linecap="round" />
+										</svg>
+
+										<svg width="28" height="25" viewBox="0 0 28 24" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M2.96484 8H22.9648L21.8775 20.1779C21.7854 21.2094 20.9211 22 19.8855 22H6.04423C5.00859 22 4.14425 21.2094 4.05215 20.1779L2.96484 8Z"
+												fill="#EFF3FF" stroke="#EFF3FF" stroke-width="2"
+												stroke-linejoin="round" />
+											<path
+												d="M7.96484 11V7.14286C7.96484 4.30254 10.2034 2 12.9648 2C15.7263 2 17.9648 4.30254 17.9648 7.14286V11"
+												stroke="#EFF3FF" stroke-width="2" stroke-linecap="round" />
+										</svg>
+
+										<span class="ul-title ms-2">Purchase history</span>
+									</button>
+								</li>
+
+								<!-- Support -->
+								<li class="nav-item list-group-item bg-color-primary" role="presentation">
+									<button class="nav-link btn w-100" id="support-tab" data-bs-toggle="tab"
+										data-bs-target="#support" type="button" role="tab" aria-controls="support"
+										aria-selected="false">
+										<svg width="28" height="25" viewBox="0 0 28 25" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M11.9648 6H6.96484C5.86027 6 4.96484 6.89543 4.96484 8V11C5.47669 11 5.98853 11.1953 6.37906 11.5858C7.16011 12.3668 7.16011 13.6332 6.37906 14.4142C5.98853 14.8047 5.47669 15 4.96484 15V18C4.96484 19.1046 5.86027 20 6.96484 20H11.9648M11.9648 6H20.9648C22.0694 6 22.9648 6.89543 22.9648 8V11C22.453 11 21.9412 11.1953 21.5506 11.5858C20.7696 12.3668 20.7696 13.6332 21.5506 14.4142C21.9412 14.8047 22.453 15 22.9648 15C22.9648 15.75 22.9648 16.8787 22.9648 18C22.9648 19.1046 22.0694 20 20.9648 20H11.9648M11.9648 6V20"
+												stroke="#EFF3FF" stroke-width="2" stroke-linejoin="round" />
+										</svg>
+										<svg width="28" height="25" viewBox="0 0 28 24" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M7 8C7 10.7614 9.23858 13 12 13C14.7614 13 17 10.7614 17 8C17 5.23858 14.7614 3 12 3C9.23858 3 7 5.23858 7 8Z"
+												fill="#EFF3FF" />
+											<path
+												d="M20 21C20 18.2386 16.4183 16 12 16C7.58172 16 4 18.2386 4 21M12 13C9.23858 13 7 10.7614 7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8C17 10.7614 14.7614 13 12 13Z"
+												fill="#EFF3FF" stroke-width="2" stroke-linecap="round"
+												stroke-linejoin="round" />
+										</svg>
+
+										<span class="ul-title ms-2">Support tickets</span>
+									</button>
+								</li>
+
+								<!-- Order -->
+								<li class="nav-item list-group-item bg-color-primary" role="presentation">
+									<button class="nav-link btn active w-100" id="order-tab" data-bs-toggle="tab"
+										data-bs-target="#order" type="button" role="tab" aria-controls="order"
+										aria-selected="false">
+										<svg width="28" height="33" viewBox="0 0 28 33" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M10.8553 16.3676L10.2267 17.1453L10.2267 17.1453L10.8553 16.3676ZM7.19558 2.7987L6.497 2.08317L7.19558 2.7987ZM16.0907 2.79861L16.7893 2.08308L16.0907 2.79861ZM12.4311 16.3677L11.8025 15.59H11.8025L12.4311 16.3677ZM11.3994 16.7118L11.6672 15.7483L11.6671 15.7483L11.3994 16.7118ZM11.8866 16.7118L11.6189 15.7483H11.6189L11.8866 16.7118ZM1.16016 13.7734C0.607871 13.7734 0.160156 14.2211 0.160156 14.7734C0.160156 15.3257 0.607871 15.7734 1.16016 15.7734V13.7734ZM3.25675 14.7734L4.2534 14.6917C4.21088 14.1728 3.77736 13.7734 3.25675 13.7734V14.7734ZM6.38491 27.4236L6.31802 26.4258H6.31802L6.38491 27.4236ZM17.2396 26.6959L17.3065 27.6937L17.2396 26.6959ZM19.174 24.9506L18.1809 24.833V24.833L19.174 24.9506ZM20.0295 17.7248L21.0225 17.8424C21.0652 17.4818 20.9091 17.1263 20.6145 16.9139C20.32 16.7014 19.9334 16.6653 19.6047 16.8196L20.0295 17.7248ZM3.49866 17.7248L2.502 17.8065V17.8065L3.49866 17.7248ZM4.14512 25.6119L3.14846 25.6935L4.14512 25.6119ZM14.9734 20.0974L14.5486 19.1921L14.9734 20.0974ZM8.33273 20.0606L8.76779 19.1602H8.76779L8.33273 20.0606ZM16.3604 31.9902V30.9902C15.8082 30.9902 15.3604 31.4379 15.3604 31.9902H16.3604ZM16.3709 31.9902H17.3709C17.3709 31.4379 16.9232 30.9902 16.3709 30.9902V31.9902ZM16.3709 32V33C16.9232 33 17.3709 32.5523 17.3709 32H16.3709ZM16.3604 32H15.3604C15.3604 32.5523 15.8082 33 16.3604 33V32ZM6.92578 31.9902V30.9902C6.3735 30.9902 5.92578 31.4379 5.92578 31.9902H6.92578ZM6.93626 31.9902H7.93626C7.93626 31.4379 7.48855 30.9902 6.93626 30.9902V31.9902ZM6.93626 32V33C7.48855 33 7.93626 32.5523 7.93626 32H6.93626ZM6.92578 32H5.92578C5.92578 32.5523 6.3735 33 6.92578 33V32ZM11.4839 15.5899C10.6767 14.9374 9.37349 13.7689 8.2795 12.2674C7.18012 10.7585 6.35334 8.99818 6.35334 7.14062H4.35334C4.35334 9.58667 5.43348 11.7576 6.66305 13.4452C7.89801 15.1401 9.34576 16.4333 10.2267 17.1453L11.4839 15.5899ZM6.35334 7.14062C6.35334 5.78509 6.90465 4.48031 7.89416 3.51423L6.497 2.08317C5.12738 3.42035 4.35334 5.23887 4.35334 7.14062H6.35334ZM7.89416 3.51423C8.88447 2.54738 10.2327 2 11.6432 2V0C9.71745 0 7.86582 0.74677 6.497 2.08317L7.89416 3.51423ZM11.6432 2C13.0538 2 14.4018 2.54729 15.3921 3.51414L16.7893 2.08308C15.4204 0.746666 13.569 0 11.6432 0V2ZM15.3921 3.51414C16.3815 4.48014 16.9329 5.78538 16.9329 7.14102H18.9329C18.9329 5.23936 18.159 3.42033 16.7893 2.08308L15.3921 3.51414ZM16.9329 7.14102C16.9329 8.99858 16.1061 10.7589 15.0068 12.2677C13.9129 13.7691 12.6097 14.9376 11.8025 15.59L13.0597 17.1455C13.9407 16.4334 15.3884 15.1403 16.6233 13.4454C17.8528 11.7579 18.9329 9.58705 18.9329 7.14102H16.9329ZM10.2267 17.1453C10.4254 17.3059 10.7131 17.5589 11.1316 17.6753L11.6671 15.7483C11.6777 15.7512 11.6908 15.756 11.7029 15.7618C11.7136 15.7669 11.7153 15.7689 11.704 15.7614C11.6911 15.7528 11.6692 15.7372 11.6306 15.7072C11.5914 15.6767 11.5464 15.6404 11.4839 15.5899L10.2267 17.1453ZM11.8025 15.59C11.7399 15.6406 11.6949 15.677 11.6557 15.7074C11.6172 15.7373 11.5954 15.7528 11.5827 15.7612C11.5717 15.7686 11.5734 15.7665 11.5843 15.7614C11.5964 15.7556 11.6091 15.751 11.6189 15.7483L12.1544 17.6753C12.5728 17.559 12.8588 17.3079 13.0597 17.1455L11.8025 15.59ZM11.1316 17.6753C11.4471 17.763 11.8389 17.763 12.1544 17.6753L11.6189 15.7483C11.6314 15.7448 11.6405 15.7429 11.6455 15.742C11.6506 15.741 11.6534 15.7407 11.6538 15.7406C11.6539 15.7406 11.6498 15.741 11.643 15.741C11.6362 15.741 11.6321 15.7406 11.6323 15.7406C11.6326 15.7407 11.6354 15.741 11.6405 15.742C11.6455 15.7429 11.6546 15.7448 11.6672 15.7483L11.1316 17.6753ZM11.6431 7.09606C11.1907 7.09606 10.8461 6.73738 10.8461 6.32205H8.84606C8.84606 7.86624 10.1106 9.09606 11.6431 9.09606V7.09606ZM10.8461 6.32205C10.8461 5.90671 11.1907 5.54803 11.6431 5.54803V3.54803C10.1106 3.54803 8.84606 4.77786 8.84606 6.32205H10.8461ZM11.6431 5.54803C12.0956 5.54803 12.4402 5.90671 12.4402 6.32205H14.4402C14.4402 4.77786 13.1757 3.54803 11.6431 3.54803V5.54803ZM12.4402 6.32205C12.4402 6.73738 12.0956 7.09606 11.6431 7.09606V9.09606C13.1757 9.09606 14.4402 7.86624 14.4402 6.32205H12.4402ZM1.16016 15.7734H3.25675V13.7734H1.16016V15.7734ZM6.45179 28.4213L17.3065 27.6937L17.1727 25.6982L6.31802 26.4258L6.45179 28.4213ZM20.1671 25.0682L21.0225 17.8424L19.0364 17.6073L18.1809 24.833L20.1671 25.0682ZM2.26009 14.8551L2.502 17.8065L4.49532 17.6432L4.2534 14.6917L2.26009 14.8551ZM2.502 17.8065L3.14846 25.6935L5.14178 25.5302L4.49532 17.6432L2.502 17.8065ZM19.6047 16.8196L14.5486 19.1921L15.3982 21.0027L20.4543 18.6301L19.6047 16.8196ZM8.76779 19.1602L3.93372 16.8244L3.0636 18.6253L7.89767 20.961L8.76779 19.1602ZM14.5486 19.1921C12.728 20.0464 10.577 20.0344 8.76779 19.1602L7.89767 20.961C10.2498 22.0975 13.0325 22.1128 15.3982 21.0027L14.5486 19.1921ZM17.3065 27.6937C18.7504 27.5969 19.9936 26.5336 20.1671 25.0682L18.1809 24.833C18.131 25.2546 17.7468 25.6597 17.1727 25.6982L17.3065 27.6937ZM6.31802 26.4258C5.65416 26.4703 5.18095 26.0081 5.14178 25.5302L3.14846 25.6935C3.28622 27.3743 4.81463 28.5311 6.45179 28.4213L6.31802 26.4258ZM16.3604 32.9902H16.3709V30.9902H16.3604V32.9902ZM15.3709 31.9902V32H17.3709V31.9902H15.3709ZM16.3709 31H16.3604V33H16.3709V31ZM17.3604 32V31.9902H15.3604V32H17.3604ZM6.92578 32.9902H6.93626V30.9902H6.92578V32.9902ZM5.93626 31.9902V32H7.93626V31.9902H5.93626ZM6.93626 31H6.92578V33H6.93626V31ZM7.92578 32V31.9902H5.92578V32H7.92578Z"
+												fill="#EFF3FF" />
+										</svg>
+										<svg width="28" height="25" viewBox="0 0 28 24" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M7 8C7 10.7614 9.23858 13 12 13C14.7614 13 17 10.7614 17 8C17 5.23858 14.7614 3 12 3C9.23858 3 7 5.23858 7 8Z"
+												fill="#EFF3FF" />
+											<path
+												d="M20 21C20 18.2386 16.4183 16 12 16C7.58172 16 4 18.2386 4 21M12 13C9.23858 13 7 10.7614 7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8C17 10.7614 14.7614 13 12 13Z"
+												fill="#EFF3FF" stroke-width="2" stroke-linecap="round"
+												stroke-linejoin="round" />
+										</svg>
+
+										<span class="ul-title ms-2">Order tracking</span>
+									</button>
+								</li>
+
+								<!-- Logout -->
+								<li class="nav-item list-group-item bg-color-primary" role="presentation">
+									<button
+										class="nav-link btn bg-color-primary secondary-color d-flex align-items-center px-0 py-3 w-100">
+										<a href="">
+											<svg width="28" height="25" viewBox="0 0 28 25" fill="none"
+												xmlns="http://www.w3.org/2000/svg">
+												<path
+													d="M7.96593 7.24205V6.18297C7.96593 3.87297 10.0154 2 12.5431 2H18.5984C21.1249 2 23.1744 3.87297 23.1744 6.18297V18.817C23.1744 21.127 21.1249 23 18.5984 23H12.5307C10.0104 23 7.96593 21.1327 7.96593 18.8295V17.7591M4.66714 9.51538L1.16016 12.4999L4.66714 15.6216M2.59845 12.4999H17.5547"
+													stroke="#EFF3FF" stroke-width="2.3" stroke-linecap="round"
+													stroke-linejoin="round" />
+											</svg>
+
+											<span class="ul-title ms-2">Logout</span>
+										</a>
+									</button>
+								</li>
+							</ul>
+						</div>
+					</section>
+				</div>
+
+				<div class="col-md-8 px-4">
+					<section class="right-box d-flex align-items-center bg-color-bg shadow h-100 rounded-4">
+						<div class="content w-100">
+							<div class="tab-content">
+								<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+									<div class="row d-flex align-items-center">
+										<h2 class="personal-info-title fw-bold mb-4">
+											Personal info
+										</h2>
+										<div class="row mb-3">
+											<div class="col-12 col-md-6">
+												<label class="primary-color fw-bold ms-3 mb-1"
+													for="firstNameInput">First Name</label>
+												<input type="text" class="form-control rounded-5 input-style"
+													id="firstNameInput" placeholder="matin" disabled>
+											</div>
+											<div class="col-12 col-md-6">
+												<label class="primary-color fw-bold ms-3 mb-1" for="LastNameInput">Last
+													Name</label>
+												<input type="text" class="form-control rounded-5 input-style"
+													id="LastNameInput" placeholder="madihi" disabled>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<div class="col-12 col-md-6">
+												<label class="primary-color fw-bold ms-3 mb-1" for="phoneInput">Mobile
+													Number</label>
+												<input type="number" class="form-control rounded-5 input-style"
+													id="phoneInput" placeholder="+989130262751" disabled>
+											</div>
+											<div class="col-12 col-md-6">
+												<label class="primary-color fw-bold ms-3 mb-1"
+													for="emailInput">Email</label>
+												<input type="email" class="form-control rounded-5 input-style"
+													id="emailInput" placeholder="matinmadihi94@gmail.com" disabled>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<div class="col-12 col-md-6">
+												<label class="primary-color fw-bold ms-3 mb-1" for="UserNameInput">User
+													Name</label>
+												<input type="text" class="form-control rounded-5 input-style"
+													id="UserNameInput" placeholder="matin94" disabled>
+											</div>
+											<div class="col-12 col-md-6">
+												<label class="primary-color fw-bold ms-3 mb-1"
+													for="PasswordInput">Password</label>
+												<input type="password" class="form-control rounded-5 input-style"
+													id="PasswordInput" placeholder="xxxxxxxxxx" disabled>
+											</div>
+										</div>
+										<div class="d-flex justify-content-center mt-5">
+											<button
+												class="btn button-style bg-color-primary secondary-color rounded-pill">Save
+												Change</button>
+
+											<button
+												class="edit-btn-style btn bg-color-primary secondary-color rounded-pill">
+												<svg width="36" height="36" viewBox="0 0 24 24" fill="none"
+													xmlns="http://www.w3.org/2000/svg">
+													<path
+														d="M21 13V17C21 19.7614 18.7614 22 16 22H8C5.23858 22 3 19.7614 3 17V9C3 6.23858 5.23858 4 8 4H12"
+														stroke="#EFF3FF" stroke-width="2" stroke-linecap="round" />
+													<path
+														d="M17.1728 3.28601C17.9533 2.50437 19.2191 2.50389 20.0002 3.28494L21.4894 4.77419C22.2638 5.54858 22.2718 6.80222 21.5074 7.58649L14.4475 14.8301C13.883 15.4092 13.1089 15.7357 12.3006 15.7357L10.6034 15.7356C9.75053 15.7356 9.06946 15.0246 9.10532 14.1719L9.17942 12.4104C9.21102 11.6592 9.52324 10.9472 10.0543 10.4153L17.1728 3.28601Z"
+														stroke="#EFF3FF" stroke-width="2" />
+													<path d="M15.7302 4.86852L19.7441 8.88251" stroke="#EFF3FF"
+														stroke-width="2" stroke-linecap="round"
+														stroke-linejoin="round" />
+												</svg>
+											</button>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="tab-pane fade" id="purchase" role="tabpanel"
+									aria-labelledby="purchase-tab">
+
+									<div class="empty-field">
+										<div class="d-flex flex-column align-items-center">
+											<h2 class="fw-bold mb-4 primary-50-color text-center">
+												You have not place order yet :(
+											</h2>
+											<a href="{%url 'shop:product_list' %}">
+												<button type="button" class="btn bg-color-primary secondary-color">Go to
+													the store!</button>
+											</a>
+										</div>
+									</div>
+
+									<div class="field">
+										<div class="row">
+											<div class="purchase">
+												<div class="purchase-row-head d-flex justify-content-between px-3">
+													<div class="col-md-3 d-flex align-items-center">
+														<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+															xmlns="http://www.w3.org/2000/svg">
+															<rect width="24" height="24" rx="12" fill="#010C8E" />
+															<path d="M7 12L10.5355 15.5355L17.6058 8.46445"
+																stroke="#EFF3FF" stroke-width="2" stroke-linecap="round"
+																stroke-linejoin="round" />
+														</svg>
+
+														<h5 class="fw-bold d-inline mb-0 ms-2">
+															Was Delivered
+														</h5>
+													</div>
+
+													<div
+														class="col-md-3 d-flex align-items-center justify-content-center">
+														<span>February</span>
+														<span class="mx-1">9</span>
+														<span class="me-1">,</span>
+														<span>2022</span>
+													</div>
+													<div
+														class="col-md-3  d-flex align-items-center justify-content-end">
+														<p class="fs-6 d-inline fw-bold mb-0 me-2">
+															Order code:
+														</p>
+														<span>000000</span>
+													</div>
+
+												</div>
+												<div class="purchase-row-body p-2">
+													<div class="row d-flex align-items-center">
+														<div class="col-md-9 ">
+															<div class="row">
+
+																<!-- تک محصول -->
+																<div class="col-md-4">
+																	<img class="rounded-3 w-100 h-100"
+																		src="../img/product-name-2-edit-no-bg.png"
+																		alt="">
+																</div>
+
+																<!-- دو محصول -->
+																<div class="col-md-4 border-primary-color border-start">
+																	<img class="rounded-3 w-100 h-100"
+																		src="../img/product-name-2-edit-no-bg.png"
+																		alt="">
+																</div>
+
+																<!-- سه محصول -->
+																<div class="col-md-4 border-primary-color border-start">
+																	<img class="rounded-3 w-100 h-100"
+																		src="../img/product-name-2-edit-no-bg.png"
+																		alt="">
+																</div>
+															</div>
+														</div>
+														<div class="col-md-3">
+															<a class="text-decoration-none primary-color text-nowrap fw-bold"
+																href="">View the invoice</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="tab-pane fade" id="support" role="tabpanel" aria-labelledby="support-tab">
+
+									<div class="empty-field">
+										<h2 class="fw-bold mb-4 primary-50-color text-center">
+											There is no ticket
+										</h2>
+										<!-- Button trigger modal -->
+										<div class="d-flex justify-content-center">
+											<button type="button"
+												class="btn bg-color-primary secondary-color rounded-pill d-flex align-items-center"
+												data-bs-toggle="modal" data-bs-target="#new-ticket">
+												<span class="text-nowrap me-2">
+													Add new ticket
+												</span>
+
+												<svg width="12" height="13" viewBox="0 0 12 13" fill="none"
+													xmlns="http://www.w3.org/2000/svg">
+													<path d="M6 1.5L6 11.5M11 6.5L1 6.5" stroke="white" stroke-width="2"
+														stroke-linecap="round" />
+												</svg>
+											</button>
+										</div>
+
+										<!-- Modal -->
+										<div class="modal fade" id="new-ticket" tabindex="-1"
+											aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered">
+												<div class="modal-content p-4">
+
+													<div class="row d-flex bg-color-secondary">
+														<div class="row d-flex align-items-center bg-color-secondary">
+															<div class="col-md-1">
+																<button button type="button" class="btn-close me-3"
+																	data-bs-dismiss="modal" aria-label="Close"></button>
+															</div>
+															<div class="col-md-11 text-center">
+																<h1 class="title" id="exampleModalLabel">
+																	Enter your ticket
+																</h1>
+															</div>
+														</div>
+													</div>
+
+													<div class="modal-body mx-5">
+														<div class="mb-3">
+															<label for="subject"
+																class="ticket-lbl form-label">Subject</label>
+															<input type="text" class="form-control ticket-inp w-50"
+																id="subject" placeholder="Subject">
+														</div>
+
+														<div class="mb-3">
+															<label for="message" class="ticket-lbl form-label">Enter
+																your ticket</label>
+															<textarea
+																class="form-control primary-color border-2 border-primary-color bg-color-secondary"
+																id="message" rows="12"
+																placeholder=" Enter your ticket"></textarea>
+														</div>
+
+														<div class="row ticket-lbl">
+															<div class="form-check">
+																<input
+																	class="form-check-input border-2 border-color-primary"
+																	type="checkbox" value="" id="terms">
+																<label class="form-check-label" for="terms">
+																	I agree to the Privacy Policy
+																</label>
+															</div>
+														</div>
+
+														<button type="submit" class="btn submit">
+															Submit
+														</button>
+
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="field">
+										<div class="row">
+											<div class="ticket">
+												<div class="ticket-row-head d-flex justify-content-between px-3">
+													<div class="col-md-4 d-flex align-items-center">
+														<h5 class="fw-bold d-inline mb-0 me-3">
+															Subject :
+														</h5>
+														<p class="subject-content"> ------ </p>
+													</div>
+
+													<div
+														class="col-md-4 d-flex align-items-center justify-content-center">
+														<span>February</span>
+														<span class="mx-1">9</span>
+														<span class="me-1">,</span>
+														<span>2022</span>
+													</div>
+													<div
+														class="col-md-4  d-flex align-items-center justify-content-end">
+														<p class="fs-6 d-inline mb-0 me-2">
+															Status :
+														</p>
+														<span>was read</span>
+													</div>
+												</div>
+												<div class="ticket-row-body p-2">
+													<div class="row">
+														<div class="col-md-6 border-primary-color border-end">
+															<div class="content">
+																<span class="fw-bold me-1">Ticket text:</span>
+																<span>Lorem ipsum dolor sit amet consectetur adipisicing
+																	elit. Adipisci dolorum voluptate saepe quasi facere
+																	ab, deserunt reprehenderit eos consectetur qui
+																	maiores odit beatae. Ducimus porro enim excepturi
+																	fugit similique accusantium!</span>
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="content">
+																<span class="fw-bold me-1">Answer:</span>
+																<span>Lorem ipsum dolor sit amet consectetur adipisicing
+																	elit. Adipisci dolorum voluptate saepe quasi facere
+																	ab, deserunt reprehenderit eos consectetur qui
+																	maiores odit beatae. Ducimus porro enim excepturi
+																	fugit similique accusantium!</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="tab-pane fade active show" id="order" role="tabpanel" aria-labelledby="order-tab">
+									
+									<div class="empty-field">
+										<div class="d-flex flex-column align-items-center">
+											<h2 class="fw-bold mb-4 primary-50-color text-center">
+												You do not have an active order :(
+											</h2>
+											<a href="{%url 'shop:product_list' %}">
+												<button type="button" class="btn bg-color-primary secondary-color">Place
+													an order!</button>
+											</a>
+										</div>
+									</div>
+
+									<div class="field">
+										<div class="row">
+											<div class="order">
+												<div class="order-row-head d-flex justify-content-between px-3">
+													<div class="col-md-3 d-flex align-items-center">
+														<h5 class="fw-bold d-inline mb-0 ms-2">
+															Sending...
+														</h5>
+													</div>
+
+													<div
+														class="col-md-3 d-flex align-items-center justify-content-center">
+														<span>February</span>
+														<span class="mx-1">9</span>
+														<span class="me-1">,</span>
+														<span>2022</span>
+													</div>
+													<div
+														class="col-md-3  d-flex align-items-center justify-content-end">
+														<p class="fs-6 d-inline fw-bold mb-0 me-2">
+															Order code:
+														</p>
+														<span>000000</span>
+													</div>
+
+												</div>
+
+												<div class="order-row-body p-2">
+													<div class="row d-flex align-items-center">
+														<div class="col-md-9">
+															<div class="row">
+
+																<!-- تک محصول -->
+																<div class="col-md-4">
+																	<img class="rounded-3 w-100 h-100"
+																		src="../img/product-name-2-edit-no-bg.png"
+																		alt="">
+																</div>
+
+																<!-- دو محصول -->
+																<div class="col-md-4 border-primary-color border-start">
+																	<img class="rounded-3 w-100 h-100"
+																		src="../img/product-name-2-edit-no-bg.png"
+																		alt="">
+																</div>
+
+																<!-- سه محصول -->
+																<div class="col-md-4 border-primary-color border-start">
+																	<img class="rounded-3 w-100 h-100"
+																		src="../img/product-name-2-edit-no-bg.png"
+																		alt="">
+																</div>
+															</div>
+														</div>
+														<div class="col-md-3">
+															<a class="text-decoration-none primary-color text-nowrap fw-bold"
+																href="">View the invoice</a>
+														</div>
+													</div>
+												</div>
+
+												<div class="order-row-footer d-flex justify-content-between px-3">
+													<div class="container">
+														<div class="row d-flex align-items-center mt-4 my-5 px-45">
+															<div class="progress-tracker mb-1">
+																<div class="progress">
+																  <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+																</div>
+																<ul class="progress-steps">
+																  <li class="step" id="step1">
+																	<div class="step-icon">1</div>
+																	<span class="step-text">Confirmation</span>
+																  </li>
+																  <li class="step" id="step2">
+																	<div class="step-icon">2</div>
+																	<span class="step-text">Shipped</span>
+																  </li>
+																  <li class="step" id="step3">
+																	<div class="step-icon">3</div>
+																	<span class="step-text">Delivered</span>
+																  </li>
+																</ul>
+															  </div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+
+	<script>
+		const navEl = document.querySelector(".navbar");
+		const navBrand = document.querySelector(".navbar-brand");
+		const navLinks = document.querySelectorAll(".nav-link");
+		const cartshop = document.querySelector(".cart-shop");
+		const person = document.querySelector(".person");
+		const spacer = document.querySelector(".spacer");
+		const login = document.querySelector(".login");
+		const search = document.querySelector(".search-icon");
+		const search_box = document.querySelectorAll(".search-box");
+		const search_btn = document.querySelector(".search-btn");
+		const hamberger = document.querySelector(".hamberger");
+		const hamberger_closed =
+			document.querySelector(".hamberger-closed");
+
+		window.addEventListener("scroll", () => {
+			if (window.scrollY >= 60) {
+				navEl.classList.add("navbar-scrolled");
+				navEl.classList.remove("mt-5", "rounded-5", "mx-5");
+
+				navBrand.classList.add("white-color");
+
+				hamberger.classList.add("white-color");
+				hamberger_closed.classList.add("white-color");
+
+				navLinks.forEach((link) => {
+					link.classList.add("white-color");
+				});
+
+				search.removeAttribute("stroke");
+				search.setAttribute("stroke", "#eff3ff");
+
+				search_box.forEach((search_) => {
+					search_.classList.remove("bg-color-bg-50");
+					search_.classList.add("bg-color-primary");
+				});
+
+				// search_btn.classList.remove("bg-color-primary", "white-color");
+				// search_btn.classList.add("bg-color-bg", "primary-color");
+
+				cartshop.removeAttribute("fill");
+				cartshop.setAttribute("fill", "#eff3ff");
+
+				person.removeAttribute("stroke");
+				person.setAttribute("stroke", "#eff3ff");
+				spacer.removeAttribute("stroke");
+				spacer.setAttribute("stroke", "#eff3ff");
+
+				login.classList.remove("white-color", "bg-color-primary");
+				login.classList.add("primary-color", "bg-color-bg");
+			} else if (window.scrollY < 60) {
+				navEl.classList.remove("navbar-scrolled");
+				navEl.classList.add("mt-5", "rounded-5", "mx-5");
+
+				navBrand.classList.remove("white-color");
+
+				navLinks.forEach((link) => {
+					link.classList.remove("white-color");
+				});
+
+				hamberger.classList.remove("white-color");
+				hamberger_closed.classList.remove("white-color");
+
+				search.removeAttribute("stroke");
+				search.setAttribute("stroke", "#010c8e");
+
+				search_box.forEach((search_) => {
+					search_.classList.remove("bg-color-primary");
+					search_.classList.add("bg-color-bg-50");
+				});
+				// search_btn.classList.remove("bg-color-bg", "primary-color");
+				// search_btn.classList.add("bg-color-primary", "white-color");
+
+				cartshop.removeAttribute("fill");
+				cartshop.setAttribute("fill", "#010c8e");
+
+				person.removeAttribute("stroke");
+				person.setAttribute("stroke", "#010c8e");
+				spacer.removeAttribute("stroke");
+				spacer.setAttribute("stroke", "#010c8e");
+
+				login.classList.remove("primary-color", "bg-color-bg");
+				login.classList.add("white-color", "bg-color-primary");
+			}
+		});
+	</script>
+	<script>
+		var turn = false;
+		var btn = false;
+		function OpenHam() {
+			if (turn === false) {
+				document.getElementById("ham-menu").style.transform =
+					"translateX(0)";
+				turn = true;
+				document
+					.getElementById("att")
+					.classList.replace("fa-bars", "fa-times");
+			} else {
+				document.getElementById("ham-menu").style.transform =
+					"translateX(-100%)";
+				turn = false;
+				document
+					.getElementById("att")
+					.classList.replace("fa-times", "fa-bars");
+			}
+		}
+		function opacity() {
+			if (btn === false) {
+				ham_menu = document.getElementsByClassName("ham-container")
+				document.getElementById("ham-menu").style.transform = "translateX(-100%)";
+				document.getElementById("att").classList.replace("fa-times", "fa-bars");
+				turn = false;
+
+			}
+		}
+	</script>
+	<script>
+		function updateProgressBar(currentStep) {
+		const steps = document.querySelectorAll('.step');
+		const progressBar = document.querySelector('.progress-bar');
+		
+		steps.forEach((step, index) => {
+			if (index < currentStep) {
+			step.classList.add('active');
+			} else {
+			step.classList.remove('active');
+			}
+		});
+
+		const progressPercentage = ((currentStep - 1) / (steps.length - 1)) * 100;
+		progressBar.style.width = `${progressPercentage}%`;
+		progressBar.setAttribute('aria-valuenow', progressPercentage);
+}
+
+		// مثال استفاده:
+		// updateProgressBar(1); // مرحله اول
+		// updateProgressBar(2); // مرحله دوم
+		updateProgressBar(3); // مرحله سوم
+
+
+
+
+
+		document.addEventListener('DOMContentLoaded', function() {
+		// فرض کنید شناسه سفارش در URL وجود دارد
+		const orderId = new URLSearchParams(window.location.search).get('orderId');
+
+		// درخواست AJAX برای دریافت وضعیت سفارش
+		fetch(`/api/order-status/${orderId}`)
+			.then(response => response.json())
+			.then(data => {
+			// فرض کنیم سرور یک عدد بین 1 تا 3 برمی‌گرداند
+			updateProgressBar(data.status);
+			})
+			.catch(error => console.error('Error:', error));
+		});
+	</script>
+</body>
+
+</html>

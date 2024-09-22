@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/material.css" />
+	<link rel="stylesheet" href="../css/additional-styles.css" />
+	<link rel="stylesheet" href="../css/billing.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <script src="../js/bootstrap.bundle.min.js"></script>
+	<title>InnoWater-2.1</title>
+</head>
+
+<body>
+	<header>
+		<nav class="navbar navbar-primary navbar-expand-md fixed-top mt-5 mx-5 mw-75 rounded-5 shadow navbar-light bg-color-primary">
+			<div class="container">
+
+				<a class="navbar-brand zoom secondary-color" href="{% url 'website:home' %}">InnoWater</a>
+
+				<!-- links -->
+				<ul class="navbar-nav nav-links secondary-color mx-lg-auto mb-2 mb-lg-0 justify-content-around text-nowrap"
+					style="width: 35vw">
+					<li class="nav-item">
+						<a class="nav-link fw-bold fst-italic active" aria-current="page" href="{% url 'website:home' %}">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{%url 'shop:product_list' %}">Shop</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="blog.html">Blog</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="about-us.html">About Us</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'website:contact' %}">Contact Us</a>
+					</li>
+				</ul>
+
+				<!-- icons -->
+				<ul class="navbar-nav mb-0 justify-content-between align-items-center">
+					<!-- search -->
+					<li class="nav-item">
+						<div class="dropdown">
+							<button id="searchDropdown" class="btn" type="button" data-bs-toggle="dropdown"
+								data-bs-auto-close="false" aria-expanded="false">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<g clip-path="url(#clip0_2497_26400)">
+										<path class="search-icon"
+											d="M21 21L16.6569 16.6569M16.6569 16.6569C18.1046 15.2091 19 13.2091 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19C13.2091 19 15.2091 18.1046 16.6569 16.6569Z"
+											stroke="#eff3ff" stroke-width="2" stroke-linecap="round"
+											stroke-linejoin="round" />
+									</g>
+									<defs>
+										<clipPath id="clip0_2497_26400">
+											<rect width="24" height="24" fill="#eff3ff" />
+										</clipPath>
+									</defs>
+								</svg>
+							</button>
+							<div id="search-box"
+								class="dropdown-menu search-style shadow p-3 dropdown-menu-end search-box"
+								aria-labelledby="searchDropdown" style="width: 400px">
+								<form class="bg-transparent border-3 border-white" id="searchForm" action="your_search_url"
+									method="GET">
+									<div class="input-group">
+										<input type="text"
+											class="form-control bg-color-secondary secondary-color border-3 border-white"
+											name="search" placeholder="Write Here" aria-label="Search" />
+										<a href="">
+											<button
+												class="btn search-btn bg-color-primary secondary-color rounded-start-0 shadow border-3 border-white"
+												type="submit">
+												Search
+											</button>
+										</a>
+									</div>
+								</form>
+							</div>
+						</div>
+					</li>
+
+					<!-- cart -->
+					<li class="nav-item me-3">
+						<a class="nav-link position-relative" aria-current="page" href="{% url 'cart:cart_detail' %}"><svg width="24" height="24"
+								viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path class="cart-shop" fill-rule="evenodd" clip-rule="evenodd"
+									d="M23.3873 5.39885C22.911 4.85671 22.2186 4.5449 21.4902 4.5449H8.59652C8.09973 4.5449 7.69654 4.94175 7.69654 5.43074C7.69654 5.91972 8.09973 6.31658 8.59652 6.31658H21.4902C21.7722 6.31658 21.9474 6.46776 22.0266 6.55753C22.1058 6.64848 22.233 6.841 22.1922 7.11502L21.0534 14.862C20.9634 15.4691 20.4258 15.9274 19.8018 15.9274H6.70897C6.04538 15.9274 5.5042 15.4372 5.449 14.7876L4.29343 1.23775C4.25983 0.836172 3.95384 0.506639 3.55065 0.438134L1.05351 0.0117488C0.557921 -0.0662053 0.097133 0.251517 0.0131351 0.734596C-0.0708627 1.21649 0.256729 1.67477 0.746317 1.75863L2.55827 2.0669L3.65504 14.9352C3.78944 16.5109 5.10221 17.6991 6.70897 17.6991H19.8018C21.315 17.6991 22.6182 16.5888 22.8342 15.1159L23.9741 7.36896C24.0785 6.65793 23.8637 5.94098 23.3873 5.39885ZM4.68955 21.3605C4.68955 20.3743 5.50553 19.5711 6.50751 19.5711C7.50948 19.5711 8.32426 20.3743 8.32426 21.3605C8.32426 22.3468 7.50948 23.1488 6.50751 23.1488C5.50553 23.1488 4.68955 22.3468 4.68955 21.3605ZM18.1928 21.3605C18.1928 20.3743 19.0076 19.5711 20.0095 19.5711C21.0115 19.5711 21.8275 20.3743 21.8275 21.3605C21.8275 22.3468 21.0115 23.1488 20.0095 23.1488C19.0076 23.1488 18.1928 22.3468 18.1928 21.3605ZM18.7786 9.79687C18.7786 10.2859 18.3755 10.6827 17.8787 10.6827H14.5511C14.0532 10.6827 13.6512 10.2859 13.6512 9.79687C13.6512 9.30789 14.0532 8.91103 14.5511 8.91103H17.8787C18.3755 8.91103 18.7786 9.30789 18.7786 9.79687Z"
+									fill="#eff3ff" />
+							</svg>
+                            <span class="badge start-50 top-0 cart-badge">
+								2
+							</span>
+						</a>
+					</li>
+
+					<!-- login -->
+					<li class="nav-item">
+						<a class="login btn bg-color-secondary primary-color rounded-5 " id="login"
+							href="login.html">Login</a>
+					</li>
+
+					<!-- profile -->
+					<li class="user-dropdown">
+						<div class="dropdown-center">
+							<div class="d-flex align-items-center">
+								<button id="UserDropdown" class="btn" type="button" data-bs-toggle="dropdown"
+									data-bs-auto-close="true" aria-expanded="false">
+									<svg class="me-2" width="3" height="27" viewBox="0 0 3 27" fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<path class="person" d="M1.54199 1.10056L1.54199 38.1397" stroke="#eff3ff"
+											stroke-width="2" stroke-linecap="round" />
+									</svg>
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<path class="spacer"
+											d="M20 21C20 18.2386 16.4183 16 12 16C7.58172 16 4 18.2386 4 21M12 13C9.23858 13 7 10.7614 7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8C17 10.7614 14.7614 13 12 13Z"
+											stroke="#eff3ff" stroke-width="2" stroke-linecap="round"
+											stroke-linejoin="round" />
+									</svg>
+								</button>
+							</div>
+
+							<ul class="dropdown-menu profile-dropdown p-3 dropdown-menu-end"
+								aria-labelledby="UserDropdown">
+								<li>
+									<a class="dropdown-item d-flex align-items-center justify-content-between" href="#">
+										<img class="profile-avatar" src="{% static 'img/avatar/crocodile1.png' %}" alt="" />
+										<p class="primary-color profile-name ms-3 mb-0">
+											matin94
+										</p>
+									</a>
+								</li>
+
+								<li>
+									<hr class="dropdown-divider" />
+								</li>
+
+								<li>
+									<a class="primary-color dropdown-item" href="#">Orders</a>
+								</li>
+								<li>
+									<a class="primary-color dropdown-item" href="#">Tickets</a>
+								</li>
+								<li>
+									<a class="primary-color dropdown-item" href="#">Acount Details</a>
+								</li>
+
+								<li>
+									<hr class="dropdown-divider" />
+								</li>
+
+								<li>
+									<a class="primary-color dropdown-item" href="#">Log Out</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+
+				<div class="hamberger">
+					<i class="fa fa-bars" id="att" aria-hidden="true" onclick="OpenHam()"></i>
+				</div>
+				<div class="hamberger-closed d-none">
+					<i class="fa fa-times" id="att" aria-hidden="true" onclick="OpenHam()"></i>
+				</div>
+			</div>
+		</nav>
+
+		<div id="ham-menu">
+			<div class="ham-container">
+				<ul class="ham-items mb-0 container">
+					<div class="hamberger-closed">
+						<i class="fa fa-times" id="att" aria-hidden="true" onclick="OpenHam()"></i>
+					</div>
+
+					<!-- profile dropdown -->
+					<li class="ham-items nav-items mt-3">
+						<div class="dropdown-center nav-items">
+
+							<button id="UserDropdown" class="btn nav-items" type="button" data-bs-toggle="dropdown"
+								data-bs-auto-close="true" aria-expanded="false">
+								<svg class="nav-items" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path class="person"
+										d="M20 21C20 18.2386 16.4183 16 12 16C7.58172 16 4 18.2386 4 21M12 13C9.23858 13 7 10.7614 7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8C17 10.7614 14.7614 13 12 13Z"
+										stroke="#010c8e" stroke-width="2" stroke-linecap="round"
+										stroke-linejoin="round" />
+								</svg>
+							</button>
+
+
+							<ul class="dropdown-menu ham-profile-dropdown p-3" aria-labelledby="UserDropdown">
+								<li>
+									<a class="dropdown-item d-flex align-items-center justify-content-between" href="#">
+										<img class="profile-avatar" src="{% static 'img/avatar/crocodile1.png' %}" alt="" />
+										<p class="primary-color profile-name ms-3 mb-0">
+											matin94
+										</p>
+									</a>
+								</li>
+
+								<li>
+									<hr class="dropdown-divider" />
+								</li>
+
+								<li>
+									<a class="primary-color dropdown-item" href="#">Orders</a>
+								</li>
+								<li>
+									<a class="primary-color dropdown-item" href="#">Tickets</a>
+								</li>
+								<li>
+									<a class="primary-color dropdown-item" href="#">Acount Details</a>
+								</li>
+
+								<li>
+									<hr class="dropdown-divider" />
+								</li>
+
+								<li>
+									<a class="primary-color dropdown-item" href="#">Log Out</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+
+					<!-- login -->
+					<li class="ham-items d-none">
+						<a class="login ham-link btn bg-color-primary secondary-color rounded-5 p-2 mw-50" id="ham-login"
+							href="login.html">Login</a>
+					</li>
+
+					<!-- page links -->
+					<li class="ham-items">
+						<a class="ham-link fw-bold fst-italic active" aria-current="page" href="{% url 'website:home' %}">Home</a>
+					</li>
+					<li class="ham-items">
+						<a class="ham-link" href="{%url 'shop:product_list' %}">Shop</a>
+					</li>
+					<li class="ham-items">
+						<a class="ham-link" href="blog.html">Blog</a>
+					</li>
+					<li class="ham-items">
+						<a class="ham-link" href="about-us.html">About Us</a>
+					</li>
+					<li class="ham-items">
+						<a class="ham-link" href="{% url 'website:contact' %}">Contact Us</a>
+					</li>
+
+					<!-- search -->
+					<li class="ham-items">
+						<button id="search-btn" type="button" class="btn" data-bs-toggle="modal"
+							data-bs-target="#searchModal" onclick="opacity()">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<g clip-path="url(#clip0_2497_26400)">
+									<path class="search-icon"
+										d="M21 21L16.6569 16.6569M16.6569 16.6569C18.1046 15.2091 19 13.2091 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19C13.2091 19 15.2091 18.1046 16.6569 16.6569Z"
+										stroke="#010c8e" stroke-width="2" stroke-linecap="round"
+										stroke-linejoin="round" />
+								</g>
+								<defs>
+									<clipPath id="clip0_2497_26400">
+										<rect width="24" height="24" fill="#eff3ff" />
+									</clipPath>
+								</defs>
+							</svg>
+						</button>
+					</li>
+
+					<!-- cart -->
+					<li class="ham-items">
+						<a class="ham-link" aria-current="page" href="{% url 'cart:cart_detail' %}"><svg width="24" height="24"
+								viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path class="cart-shop" fill-rule="evenodd" clip-rule="evenodd"
+									d="M23.3873 5.39885C22.911 4.85671 22.2186 4.5449 21.4902 4.5449H8.59652C8.09973 4.5449 7.69654 4.94175 7.69654 5.43074C7.69654 5.91972 8.09973 6.31658 8.59652 6.31658H21.4902C21.7722 6.31658 21.9474 6.46776 22.0266 6.55753C22.1058 6.64848 22.233 6.841 22.1922 7.11502L21.0534 14.862C20.9634 15.4691 20.4258 15.9274 19.8018 15.9274H6.70897C6.04538 15.9274 5.5042 15.4372 5.449 14.7876L4.29343 1.23775C4.25983 0.836172 3.95384 0.506639 3.55065 0.438134L1.05351 0.0117488C0.557921 -0.0662053 0.097133 0.251517 0.0131351 0.734596C-0.0708627 1.21649 0.256729 1.67477 0.746317 1.75863L2.55827 2.0669L3.65504 14.9352C3.78944 16.5109 5.10221 17.6991 6.70897 17.6991H19.8018C21.315 17.6991 22.6182 16.5888 22.8342 15.1159L23.9741 7.36896C24.0785 6.65793 23.8637 5.94098 23.3873 5.39885ZM4.68955 21.3605C4.68955 20.3743 5.50553 19.5711 6.50751 19.5711C7.50948 19.5711 8.32426 20.3743 8.32426 21.3605C8.32426 22.3468 7.50948 23.1488 6.50751 23.1488C5.50553 23.1488 4.68955 22.3468 4.68955 21.3605ZM18.1928 21.3605C18.1928 20.3743 19.0076 19.5711 20.0095 19.5711C21.0115 19.5711 21.8275 20.3743 21.8275 21.3605C21.8275 22.3468 21.0115 23.1488 20.0095 23.1488C19.0076 23.1488 18.1928 22.3468 18.1928 21.3605ZM18.7786 9.79687C18.7786 10.2859 18.3755 10.6827 17.8787 10.6827H14.5511C14.0532 10.6827 13.6512 10.2859 13.6512 9.79687C13.6512 9.30789 14.0532 8.91103 14.5511 8.91103H17.8787C18.3755 8.91103 18.7786 9.30789 18.7786 9.79687Z"
+									fill="#010c8e" />
+							</svg>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="modal fade search-modal-effect" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+
+					<div class="modal-body">
+						<div class="input-group">
+							<input type="text" class="form-control bg-color-secondary primary-color " name="search"
+								placeholder="Write Here" aria-label="Search" />
+							<a href="">
+								<button class="btn search-btn bg-color-primary secondary-color rounded-start-0 shadow "
+									type="submit">
+									Search
+								</button>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</header>
+
+
+	<main class="mx-3 pb-4">
+		<div class="container-changed w-75">
+			<div class="row pt-9 mb-5">
+				<div class="col-md-2">
+					<a class="d-inline" href="{% url 'cart:cart_detail' %}">
+						<button class="btn primary-color border-primary border-2 rounded-5 text-nowrap" dmx-show="DETAILS" dmx-on:click="RUN_A_FLOW">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<g clip-path="url(#clip0_2497_25890)">
+									<path d="M5 12H19" stroke="#010c8e" stroke-width="2" stroke-linecap="round"
+										stroke-linejoin="round" />
+									<path d="M12 5L5 12L12 19" stroke="#010c8e" stroke-width="2" stroke-linecap="round"
+										stroke-linejoin="round" />
+								</g>
+								<defs>
+									<clipPath id="clip0_2497_25890">
+										<rect width="24" height="24" fill="white" />
+									</clipPath>
+								</defs>
+							</svg>
+
+							<p class="d-inline-flex mb-0 fw-bold">Return to cart</p>
+						</button>
+					</a>
+				</div>
+				<div class="col-md-4 offset-md-2 d-flex justify-content-center ">
+					<h1 class="fw-bold text-nowrap">Billing Details</h1>
+				</div>
+			</div>
+
+
+
+
+
+			<div class="row mid">
+				<div class="col-xxl-6 mt-4">
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="mb-4">
+								<label class="ps-3 mb-1" for="name">Your name<span class="text-danger">*</span></label>
+								<input type="text" class="form-control rounded-5 bg-transparent border-primary" id="name"
+									placeholder="Your Name" />
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="mb-4">
+								<label class="ps-3 mb-1" for="lname">Subject<span class="text-danger">*</span></label>
+								<input type="text" class="form-control rounded-5 bg-transparent  border-primary"
+									id="lname" placeholder="Subject" />
+							</div>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="mb-4">
+								<label class="ps-3 mb-1" for="Company">Company</label>
+								<input type="text" class="form-control rounded-5 bg-transparent border-primary"
+									id="Company" placeholder="InnoWater" />
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="mb-4">
+								<label class="ps-3 mb-1" for="Country">Country/Region<span
+										class="text-danger">*</span></label>
+								<input type="text" class="form-control rounded-5 bg-transparent  border-primary"
+									id="Country" placeholder="United Arab Emirates" />
+							</div>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="mb-4">
+							<label class="ps-3 mb-1" for="address">StreetAddress<span
+									class="text-danger">*</span></label>
+							<input type="text" class="form-control rounded-5 bg-transparent border-primary" id="address"
+								placeholder="Address" />
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="mb-4">
+								<label class="ps-3 mb-1" for="City">Town/City<span class="text-danger">*</span></label>
+								<input type="text" class="form-control rounded-5 bg-transparent border-primary bg-transparent"
+									id="City" placeholder="Abu Dhabi" />
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="mb-4">
+								<label class="ps-3 mb-1" for="State">State<span class="text-danger">*</span></label>
+								<input type="text" class="form-control rounded-5 bg-transparent  border-primary"
+									id="State" placeholder="State" />
+							</div>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="mb-4">
+								<label class="ps-3 mb-1" for="ZipCode">ZipCode<span class="text-danger">*</span></label>
+								<input type="text" class="form-control rounded-5 bg-transparent border-primary"
+									id="ZipCode" placeholder="12345" />
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="mb-4">
+								<label class="ps-3 mb-1" for="Phone-Number">Phone Number<span
+										class="text-danger">*</span></label>
+								<input type="text" class="form-control rounded-5 bg-transparent  border-primary"
+									id="Phone-Number" placeholder="Phone Number" />
+							</div>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="mb-5">
+							<label class="ps-3 mb-2" for="Email">Email Address<span class="text-danger">*</span></label>
+							<input type="text" class="form-control rounded-5 bg-transparent border-primary" id="Email"
+							placeholder="Email Address"/>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="mb-4">
+							<label for="exampleFormControlTextarea1" class="form-label ps-3 mb-1">Order Notes</label>
+							<textarea class="form-control rounded-4 bg-transparent border-primary"
+								id="exampleFormControlTextarea1" placeholder="Type your massage here..."
+								rows="12"></textarea>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-xxl-6 px-5 mt-4">
+					<div class="row">
+						<div class="row px-5">
+							<div
+								class="flexx d-flex pb-2 justify-content-between ">
+								<p class="mb-0 fs-3">Product</p>
+								<p class="mb-0 fs-3">Subtotal</p>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="inner border-bottom border-top border-primary-color border-2 py-3 px-5">
+								<div class="row">
+									<div class="row">
+										<div class="innerr d-flex justify-content-between">
+											<p class="mb-0 f-l">Porcelain Dinner Plate (27cm)</p>
+											<p class="mb-0 f-l">$59.00</p>
+										</div>
+									</div>
+									<div class="row my-2">
+										<div class="innerr d-flex justify-content-between">
+											<p class="mb-0 f-l">Ophelia Matte Natural Vase</p>
+											<p class="mb-0 f-l">$168.00</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="innerr d-flex justify-content-between">
+											<p class="mb-0 f-l">Luana Bowl</p>
+											<p class="mb-0 f-l">$49.00</p>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="row mt-3 mb-2">
+									<div class="row mb-1">
+										<div class="innerr d-flex justify-content-between">
+											<p class="mb-0 f-l">Subtotal</p>
+											<p class="mb-0 f-l">$475.00</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="innerr d-flex justify-content-between">
+											<p class="mb-0 f-l">Shipping</p>
+											<p class="mb-0 f-l">$15.00</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row pt-1 mb-3 px-5">
+							<div class="flexx d-flex justify-content-between">
+								<p class="mb-0 fs-3">Total</p>
+								<p class="mb-0 fs-3">$490.00</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3">
+						<div class="bg-color-primary secondary-color rounded-5 px-5 pt-45 pb-45 mb-5">
+							<div class="row mb-3">
+								<h6 class="fs-2 fw-bold">
+									Payment
+								</h6>
+							</div>
+
+							<div class="row mt-5">
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="form-check d-flex align-items-center ">
+										<input class="form-check-input radio-lg mt-0 me-3" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+										<label class="form-check-label fw-bold fs-4" for="flexRadioDefault1">
+											Credit Cards
+										</label>
+									</div>
+
+									<div class="-credits-svg">
+										<svg class="bg-color-secondary rounded-1 px-1" width="69" height="30"
+											viewBox="0 0 69 20.4" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M64 0.299988H59.7C58.4 0.299988 57.4 0.699988 56.8 1.99999L48.6 20.7H54.4C54.4 20.7 55.4 18.2 55.6 17.6C56.2 17.6 61.9 17.6 62.7 17.6C62.9 18.3 63.4 20.6 63.4 20.6H68.6L64 0.299988ZM57.2 13.4C57.7 12.2 59.4 7.69999 59.4 7.69999C59.4 7.79999 59.9 6.49999 60.1 5.79999L60.5 7.59999C60.5 7.59999 61.6 12.5 61.8 13.5H57.2V13.4Z"
+												fill="#3362AB" />
+											<path
+												d="M49 14C49 18.2 45.2 21 39.3 21C36.8 21 34.4 20.5 33.1 19.9L33.9 15.3L34.6 15.6C36.4 16.4 37.6 16.7 39.8 16.7C41.4 16.7 43.1 16.1 43.1 14.7C43.1 13.8 42.4 13.2 40.2 12.2C38.1 11.2 35.3 9.6 35.3 6.7C35.3 2.7 39.2 0 44.7 0C46.8 0 48.6 0.4 49.7 0.9L48.9 5.3L48.5 4.9C47.5 4.5 46.2 4.1 44.3 4.1C42.2 4.2 41.2 5.1 41.2 5.9C41.2 6.8 42.4 7.5 44.3 8.4C47.5 9.9 49 11.6 49 14Z"
+												fill="#3362AB" />
+											<path
+												d="M0.199982 0.499976L0.299982 0.0999756H8.89998C10.1 0.0999756 11 0.499976 11.3 1.79998L13.2 10.8C11.3 5.99998 6.89998 2.09998 0.199982 0.499976Z"
+												fill="#F9B50B" />
+											<path
+												d="M25.3 0.300012L16.6 20.6H10.7L5.69998 3.60001C9.29998 5.90001 12.3 9.50001 13.4 12L14 14.1L19.4 0.200012H25.3V0.300012Z"
+												fill="#3362AB" />
+											<path d="M27.6 0.200012H33.1L29.6 20.6H24.1L27.6 0.200012Z"
+												fill="#3362AB" />
+										</svg>
+
+										<svg class="bg-color-secondary rounded-1 p-1" width="69" height="30"
+											viewBox="0 0 66 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M65.4121 19.5C65.4121 30.2 56.7121 39 45.9121 39C35.2121 39 26.4121 30.2 26.4121 19.5C26.4121 8.8 35.1121 0 45.8121 0C56.7121 0 65.4121 8.8 65.4121 19.5Z"
+												fill="#F9B50B" />
+											<path
+												d="M39.3121 19.6C39.3121 18.2 39.1121 16.8 38.9121 15.5H26.9121C27.0121 14.8 27.2121 14.2 27.4121 13.4H38.1121C37.9121 12.7 37.6121 12 37.3121 11.3H28.2121C28.5121 10.6 28.9121 10 29.3121 9.2H36.2121C35.8121 8.5 35.3121 7.8 34.7121 7.1H30.9121C31.5121 6.4 32.1121 5.8 32.9121 5.1C29.5121 1.9 24.9121 0 19.8121 0C9.21211 0.3 0.412109 8.8 0.412109 19.5C0.412109 30.2 9.11211 39 19.9121 39C25.0121 39 29.5121 37 33.0121 33.9C33.7121 33.3 34.3121 32.6 35.0121 31.8H31.0121C30.5121 31.2 30.0121 30.5 29.6121 29.8H36.4121C36.8121 29.2 37.2121 28.5 37.5121 27.7H28.4121C28.1121 27.1 27.8121 26.4 27.6121 25.6H38.3121C38.9121 23.8 39.3121 21.8 39.3121 19.6Z"
+												fill="#C8191C" />
+											<path
+												d="M26.8121 24.5L27.1121 22.7C27.0121 22.7 26.8121 22.8 26.6121 22.8C25.9121 22.8 25.8121 22.4 25.9121 22.2L26.5121 18.6H27.6121L27.9121 16.6H26.9121L27.1121 15.4H25.0121C25.0121 15.4 23.8121 22.2 23.8121 23C23.8121 24.2 24.5121 24.8 25.5121 24.8C26.1121 24.8 26.6121 24.6 26.8121 24.5Z"
+												fill="white" />
+											<path
+												d="M27.5121 21.2C27.5121 24.1 29.5121 24.8 31.1121 24.8C32.6121 24.8 33.3121 24.5 33.3121 24.5L33.7121 22.5C33.7121 22.5 32.6121 23 31.5121 23C29.2121 23 29.6121 21.3 29.6121 21.3H33.8121C33.8121 21.3 34.1121 20 34.1121 19.4C34.1121 18.1 33.4121 16.4 31.1121 16.4C29.1121 16.3 27.5121 18.6 27.5121 21.2ZM31.1121 18.2C32.2121 18.2 32.0121 19.5 32.0121 19.6H29.7121C29.8121 19.5 30.0121 18.2 31.1121 18.2Z"
+												fill="white" />
+											<path
+												d="M44.2121 24.5L44.6121 22.2C44.6121 22.2 43.6121 22.7 42.8121 22.7C41.4121 22.7 40.7121 21.6 40.7121 20.3C40.7121 17.8 41.9121 16.5 43.4121 16.5C44.4121 16.5 45.3121 17.1 45.3121 17.1L45.6121 14.9C45.6121 14.9 44.4121 14.4 43.2121 14.4C40.8121 14.4 38.5121 16.5 38.5121 20.4C38.5121 23 39.7121 24.7 42.2121 24.7C43.1121 24.8 44.2121 24.5 44.2121 24.5Z"
+												fill="white" />
+											<path
+												d="M15.5121 16.3C14.1121 16.3 13.0121 16.7 13.0121 16.7L12.7121 18.5C12.7121 18.5 13.6121 18.1 15.0121 18.1C15.7121 18.1 16.3121 18.2 16.3121 18.8C16.3121 19.2 16.2121 19.3 16.2121 19.3H15.3121C13.5121 19.3 11.6121 20 11.6121 22.4C11.6121 24.3 12.8121 24.7 13.6121 24.7C15.0121 24.7 15.7121 23.8 15.8121 23.8L15.7121 24.6H17.4121L18.2121 18.9C18.2121 16.4 16.2121 16.3 15.5121 16.3ZM15.9121 20.9C15.9121 21.2 15.7121 22.9 14.5121 22.9C13.9121 22.9 13.7121 22.4 13.7121 22.1C13.7121 21.6 14.0121 20.9 15.6121 20.9C15.8121 20.9 15.9121 20.9 15.9121 20.9Z"
+												fill="white" />
+											<path
+												d="M20.2121 24.7C20.7121 24.7 23.3121 24.8 23.3121 22C23.3121 19.4 20.8121 19.9 20.8121 18.9C20.8121 18.4 21.2121 18.2 21.9121 18.2C22.2121 18.2 23.3121 18.3 23.3121 18.3L23.6121 16.4C23.6121 16.4 22.9121 16.2 21.6121 16.2C20.1121 16.2 18.5121 16.8 18.5121 18.9C18.5121 21.3 21.1121 21.1 21.1121 22C21.1121 22.6 20.4121 22.7 19.9121 22.7C19.0121 22.7 18.0121 22.4 18.0121 22.4L17.7121 24.3C17.9121 24.5 18.5121 24.7 20.2121 24.7Z"
+												fill="white" />
+											<path
+												d="M61.4121 14.7L61.0121 17.5C61.0121 17.5 60.2121 16.5 59.0121 16.5C57.1121 16.5 55.5121 18.8 55.5121 21.5C55.5121 23.2 56.3121 24.9 58.1121 24.9C59.3121 24.9 60.1121 24.1 60.1121 24.1L60.0121 24.8H62.1121L63.6121 14.9L61.4121 14.7ZM60.4121 20.1C60.4121 21.2 59.9121 22.7 58.7121 22.7C58.0121 22.7 57.6121 22.1 57.6121 21C57.6121 19.3 58.3121 18.3 59.3121 18.3C60.0121 18.4 60.4121 18.9 60.4121 20.1Z"
+												fill="white" />
+											<path
+												d="M4.2121 24.6L5.4121 17.2L5.6121 24.6H7.0121L9.7121 17.2L8.6121 24.6H10.8121L12.5121 14.7H9.1121L7.0121 20.8L6.9121 14.7H3.9121L2.2121 24.6H4.2121Z"
+												fill="white" />
+											<path
+												d="M36.2121 24.6C36.8121 21.2 36.9121 18.4 38.4121 18.9C38.6121 17.6 38.9121 17 39.1121 16.5H38.7121C37.8121 16.5 37.0121 17.7 37.0121 17.7L37.2121 16.6H35.2121L33.9121 24.6H36.2121Z"
+												fill="white" />
+											<path
+												d="M49.0121 16.3C47.6121 16.3 46.5121 16.7 46.5121 16.7L46.2121 18.5C46.2121 18.5 47.1121 18.1 48.5121 18.1C49.2121 18.1 49.8121 18.2 49.8121 18.8C49.8121 19.2 49.7121 19.3 49.7121 19.3H48.8121C47.0121 19.3 45.1121 20 45.1121 22.4C45.1121 24.3 46.3121 24.7 47.1121 24.7C48.5121 24.7 49.2121 23.8 49.3121 23.8L49.2121 24.6H51.1121L51.9121 18.9C51.9121 16.4 49.7121 16.3 49.0121 16.3ZM49.5121 20.9C49.5121 21.2 49.3121 22.9 48.1121 22.9C47.5121 22.9 47.3121 22.4 47.3121 22.1C47.3121 21.6 47.6121 20.9 49.2121 20.9C49.4121 20.9 49.4121 20.9 49.5121 20.9Z"
+												fill="white" />
+											<path
+												d="M53.5121 24.6C54.1121 21.2 54.2121 18.4 55.7121 18.9C55.9121 17.6 56.2121 17 56.4121 16.5H56.0121C55.1121 16.5 54.3121 17.7 54.3121 17.7L54.5121 16.6H52.5121L51.2121 24.6H53.5121Z"
+												fill="white" />
+										</svg>
+									</div>
+								</div>
+							</div>
+
+							<div class="row mt-4 border-top border-bottom border-2 border-secondary-color pt-4 pb-2">
+								<div class="row">
+
+									<div class="form-floating mb-3">
+										<input type="number" class="credit form-control bg-transparent secondary-color rounded-5 px-4"
+											id="card-num" placeholder="Card number">
+										<label class="mx-3 secondary-color" for="card-num">Card number</label>
+									</div>
+
+									<div class="form-floating mb-3">
+										<input type="text" class="credit form-control bg-transparent secondary-color rounded-5 px-4"
+											id="card-name" placeholder="Name on card">
+										<label class="mx-3 secondary-color" for="card-name">Name on card</label>
+									</div>
+
+									<div class="col-md-6">
+										<div class="form-floating mb-3">
+											<input type="text" class="credit form-control bg-transparent secondary-color rounded-5 px-4"
+												id="card-name" placeholder="Expiration date">
+											<label class=" secondary-color" for="card-name">Expiration date
+												</label>
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="form-floating mb-3">
+											<input type="text" class="credit form-control bg-transparent secondary-color rounded-5 px-4"
+												id="card-name" placeholder="Expiration date">
+											<label class=" secondary-color" for="card-name">Expiration date
+												</label>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="row mt-4">
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="form-check d-flex align-items-center">
+											<input class="form-check-input radio-lg mt-0 me-3" type="radio"
+												name="flexRadioDefault" id="paypal">
+											<label class="form-check-label fw-bold fs-4" for="paypal">
+												PayPal
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row mt-4 d-inline">
+								<div class="inner d-flex justify-content-center">
+									<a class="login py-3 px-5 btn bg-color-secondary primary-color rounded-5 text-nowrap" href="#">
+										<p class="mb-0 d-inline fw-bold text-nowrap">Complete the purchase</p>
+										<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<g clip-path="url(#clip0_2497_26467)">
+												<path d="M19 12L5 12" stroke="#010c8e" stroke-width="2"
+													stroke-linecap="round" stroke-linejoin="round" />
+												<path d="M12 19L19 12L12 5" stroke="#010c8e" stroke-width="2"
+													stroke-linecap="round" stroke-linejoin="round" />
+											</g>
+											<defs>
+												<clipPath id="clip0_2497_26467">
+													<rect width="24" height="24" fill="#010c8e" />
+												</clipPath>
+											</defs>
+										</svg>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- continue to shop button -->
+			<div class="row bot mt-3">
+				<div class="inner d-flex justify-content-center align-items-center">
+					<a class="login btn bg-color-primary py-3 px-5 secondary-color rounded-5 text-nowrap" href="{%url 'shop:product_list' %}">
+						<svg class="me-2" width="24" height="24" viewBox="0 0 24 24" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<g clip-path="url(#clip0_2497_26466)">
+								<path d="M5 12H19" stroke="#eff3ff" stroke-width="2" stroke-linecap="round"
+									stroke-linejoin="round" />
+								<path d="M12 5L5 12L12 19" stroke="#eff3ff" stroke-width="2" stroke-linecap="round"
+									stroke-linejoin="round" />
+							</g>
+							<defs>
+								<clipPath id="clip0_2497_26466">
+									<rect width="24" height="24" fill="#eff3ff" />
+								</clipPath>
+							</defs>
+						</svg>
+						<p class="mb-0 d-inline text-nowrap">Continue to shopping</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<!-- primary nav script -->
+    <script>
+		const navElp = document.querySelector(".navbar");
+
+		window.addEventListener("scroll", () => {
+			if (window.scrollY >= 60) {
+				navElp.classList.add("navbar-scrolled");
+				navElp.classList.remove("mt-5", "rounded-5", "mx-5");
+
+			} else if (window.scrollY < 60) {
+				navElp.classList.remove("navbar-scrolled");
+				navElp.classList.add("mt-5", "rounded-5", "mx-5");
+			}
+		});
+	</script>
+    <script>
+		var turn = false;
+		var btn = false;
+		function OpenHam() {
+			if (turn === false) {
+				document.getElementById("ham-menu").style.transform =
+					"translateX(0)";
+				turn = true;
+				document
+					.getElementById("att")
+					.classList.replace("fa-bars", "fa-times");
+			} else {
+				document.getElementById("ham-menu").style.transform =
+					"translateX(-100%)";
+				turn = false;
+				document
+					.getElementById("att")
+					.classList.replace("fa-times", "fa-bars");
+			}
+		}
+		function opacity() {
+			if (btn === false) {
+				ham_menu = document.getElementsByClassName("ham-container")
+				document.getElementById("ham-menu").style.transform = "translateX(-100%)";
+				document.getElementById("att").classList.replace("fa-times", "fa-bars");
+				turn = false;
+
+			}
+		}
+	</script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+		const creditCardRadio = document.getElementById('flexRadioDefault1');
+		const paypalRadio = document.getElementById('paypal');
+		const creditInputs = document.querySelectorAll('.credit');
+
+		function toggleInputs() {
+			if (creditCardRadio.checked) {
+				creditInputs.forEach(input => {
+					input.removeAttribute('disabled');
+					input.classList.remove('disabled-input'); // پاک کردن استایل disabled
+				});
+			} else if (paypalRadio.checked) {
+				creditInputs.forEach(input => {
+					input.setAttribute('disabled', 'true');
+					input.classList.add('disabled-input'); // اضافه کردن استایل disabled
+				});
+			}
+		}
+
+		// Event listeners for radio buttons
+		creditCardRadio.addEventListener('change', toggleInputs);
+		paypalRadio.addEventListener('change', toggleInputs);
+
+		// Initial state based on checked radio button
+		toggleInputs();
+		});
+
+	</script>
+</body>
+
+</html>
+
