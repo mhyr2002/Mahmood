@@ -94,7 +94,7 @@
 					</li>
 					<!-- signup -->
 					<li class="nav-item ps-2">
-						<a class="login btn bg-color-primary secondary-color rounded-5" id="login"
+						<a class="signup btn bg-color-primary secondary-color rounded-5" id="signup"
 							href="{% url 'accounts:signup' %}">SignUp</a>
 					</li>
 					{% endif %}
@@ -215,7 +215,7 @@
 					</li>
 					<!-- signup -->
 					<li class="ham-item">
-						<a class="login ham-link btn bg-color-primary secondary-color rounded-5 py-1 px-2" id="login"
+						<a class="signup ham-link btn bg-color-primary secondary-color rounded-5 py-1 px-2" id="signup"
 							href="{% url 'accounts:signup' %}">SignUp</a>
 					</li>
 
@@ -841,9 +841,11 @@
 		const navEl = document.querySelector(".navbar");
 		const navBrand = document.querySelector(".navbar-brand");
 		const navLinks = document.querySelectorAll(".nav-link");
+		const cartshop = document.querySelector(".cart-shop");
 		const person = document.querySelector(".person");
 		const spacer = document.querySelector(".spacer");
 		const login = document.querySelector(".login");
+		const signup = document.querySelector(".signup");
 		const search = document.querySelector(".search-icon");
 		const search_box = document.querySelectorAll(".search-box");
 		const search_btn = document.querySelector(".search-btn");
@@ -853,8 +855,14 @@
 
 		window.addEventListener("scroll", () => {
 			if (window.scrollY >= 60) {
-				navEl.classList.add("navbar-scrolled");
+                navEl.classList.add("navbar-scrolled");
 				navEl.classList.remove("mt-5", "rounded-5", "mx-5");
+                
+                login.classList.remove("secondary-color", "bg-color-primary");
+                login.classList.add("primary-color", "bg-color-secondary");
+
+                signup.classList.remove("secondary-color", "bg-color-primary");
+                signup.classList.add("primary-color", "bg-color-secondary");
 
 				navBrand.classList.add("secondary-color");
 				navBrand.classList.remove("primary-color");
@@ -874,16 +882,23 @@
 					search_.classList.add("bg-color-primary");
 				});
 
+				cartshop.removeAttribute("fill");
+				cartshop.setAttribute("fill", "#eff3ff");
+
 				person.removeAttribute("stroke");
 				person.setAttribute("stroke", "#eff3ff");
 				spacer.removeAttribute("stroke");
 				spacer.setAttribute("stroke", "#eff3ff");
 
-				login.classList.remove("secondary-color", "bg-color-primary");
-				login.classList.add("primary-color", "bg-color-secondary");
 			} else if (window.scrollY < 60) {
+                signup.classList.remove("primary-color", "bg-color-secondary");
+                signup.classList.add("secondary-color", "bg-color-primary");
+
 				navEl.classList.remove("navbar-scrolled");
 				navEl.classList.add("mt-5", "rounded-5", "mx-5");
+                
+                login.classList.remove("primary-color", "bg-color-secondary");
+                login.classList.add("secondary-color", "bg-color-primary");
 
 				navBrand.classList.remove("secondary-color");
 				navBrand.classList.add("primary-color");
@@ -903,13 +918,14 @@
 					search_.classList.add("bg-color-secondary-50");
 				});
 
+				cartshop.removeAttribute("fill");
+				cartshop.setAttribute("fill", "#010c8e");
+
 				person.removeAttribute("stroke");
 				person.setAttribute("stroke", "#010c8e");
 				spacer.removeAttribute("stroke");
 				spacer.setAttribute("stroke", "#010c8e");
 
-				login.classList.remove("primary-color", "bg-color-secondary");
-				login.classList.add("secondary-color", "bg-color-primary");
 			}
 		});
 	</script>
