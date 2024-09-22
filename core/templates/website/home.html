@@ -189,7 +189,7 @@
 									<a class="dropdown-item d-flex align-items-center justify-content-between" href="#">
 										<img class="profile-avatar" src="{% static 'img/avatar/crocodile1.png' %}" alt="" />
 										<p class="primary-color profile-name ms-3 mb-0">
-											matin94
+											{{request.user.username}}
 										</p>
 									</a>
 								</li>
@@ -209,6 +209,7 @@
 					{% endif %}
 
 					<!-- login -->
+                    {% if not request.user.is_authenticated %}
 					<li class="ham-items">
 						<a class="login ham-link btn bg-color-primary secondary-color rounded-5 py-1 px-2" id="login"
 							href="{% url 'accounts:login' %}">Login</a>
@@ -218,6 +219,7 @@
 						<a class="signup ham-link btn bg-color-primary secondary-color rounded-5 py-1 px-2" id="signup"
 							href="{% url 'accounts:signup' %}">SignUp</a>
 					</li>
+                    {% endif %}
 
 					<!-- page links -->
 					<li class="ham-items">
@@ -841,7 +843,6 @@
 		const navEl = document.querySelector(".navbar");
 		const navBrand = document.querySelector(".navbar-brand");
 		const navLinks = document.querySelectorAll(".nav-link");
-		const cartshop = document.querySelector(".cart-shop");
 		const person = document.querySelector(".person");
 		const spacer = document.querySelector(".spacer");
 		const login = document.querySelector(".login");
@@ -850,20 +851,13 @@
 		const search_box = document.querySelectorAll(".search-box");
 		const search_btn = document.querySelector(".search-btn");
 		const hamberger = document.querySelector(".hamberger");
-		const hamberger_closed =
-			document.querySelector(".hamberger-closed");
+		const hamberger_closed = document.querySelector(".hamberger-closed");
 
 		window.addEventListener("scroll", () => {
 			if (window.scrollY >= 60) {
                 navEl.classList.add("navbar-scrolled");
 				navEl.classList.remove("mt-5", "rounded-5", "mx-5");
                 
-                login.classList.remove("secondary-color", "bg-color-primary");
-                login.classList.add("primary-color", "bg-color-secondary");
-
-                signup.classList.remove("secondary-color", "bg-color-primary");
-                signup.classList.add("primary-color", "bg-color-secondary");
-
 				navBrand.classList.add("secondary-color");
 				navBrand.classList.remove("primary-color");
 
@@ -882,24 +876,26 @@
 					search_.classList.add("bg-color-primary");
 				});
 
-				cartshop.removeAttribute("fill");
-				cartshop.setAttribute("fill", "#eff3ff");
+                if (login && signup){
+                    login.classList.remove("secondary-color", "bg-color-primary");
+                    login.classList.add("primary-color", "bg-color-secondary");
 
-				person.removeAttribute("stroke");
-				person.setAttribute("stroke", "#eff3ff");
-				spacer.removeAttribute("stroke");
-				spacer.setAttribute("stroke", "#eff3ff");
+                    signup.classList.remove("secondary-color", "bg-color-primary");
+                    signup.classList.add("primary-color", "bg-color-secondary");
+                }
+
+				if (person && spacer) {
+                    person.removeAttribute("stroke");
+                    person.setAttribute("stroke", "#eff3ff");
+
+                    spacer.removeAttribute("stroke");
+                    spacer.setAttribute("stroke", "#eff3ff");
+                }
 
 			} else if (window.scrollY < 60) {
-                signup.classList.remove("primary-color", "bg-color-secondary");
-                signup.classList.add("secondary-color", "bg-color-primary");
-
-				navEl.classList.remove("navbar-scrolled");
+                navEl.classList.remove("navbar-scrolled");
 				navEl.classList.add("mt-5", "rounded-5", "mx-5");
                 
-                login.classList.remove("primary-color", "bg-color-secondary");
-                login.classList.add("secondary-color", "bg-color-primary");
-
 				navBrand.classList.remove("secondary-color");
 				navBrand.classList.add("primary-color");
 
@@ -918,13 +914,21 @@
 					search_.classList.add("bg-color-secondary-50");
 				});
 
-				cartshop.removeAttribute("fill");
-				cartshop.setAttribute("fill", "#010c8e");
+                if (login && signup){
+                    login.classList.remove("primary-color", "bg-color-secondary");
+                    login.classList.add("secondary-color", "bg-color-primary");
 
-				person.removeAttribute("stroke");
-				person.setAttribute("stroke", "#010c8e");
-				spacer.removeAttribute("stroke");
-				spacer.setAttribute("stroke", "#010c8e");
+                    signup.classList.remove("primary-color", "bg-color-secondary");
+                    signup.classList.add("secondary-color", "bg-color-primary");
+                }
+
+				if (person && spacer) {
+                    person.removeAttribute("stroke");
+                    person.setAttribute("stroke", "#010c8e");
+
+                    spacer.removeAttribute("stroke");
+                    spacer.setAttribute("stroke", "#010c8e");
+                }
 
 			}
 		});

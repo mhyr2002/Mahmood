@@ -84,25 +84,19 @@
 						</div>
 					</li>
 
-					
-
 					{% if not request.user.is_authenticated %}
 					<!-- login -->
-					<li class="nav-item" style="margin-right: 10px;">
+					<li class="nav-item">
 						<a class="login btn bg-color-primary secondary-color rounded-5" id="login"
 							href="{% url 'accounts:login' %}">Login</a>
 					</li>
 					<!-- signup -->
-					<li class="nav-item">
-						<a class="login btn bg-color-primary secondary-color rounded-5" id="login"
+					<li class="nav-item ps-2">
+						<a class="signup btn bg-color-primary secondary-color rounded-5" id="signup"
 							href="{% url 'accounts:signup' %}">SignUp</a>
 					</li>
 					{% endif %}
 
-
-
-
-					
 					<!-- profile -->
 					{% if request.user.is_authenticated %}
 					<li class="user-dropdown">
@@ -122,8 +116,7 @@
 											stroke-linejoin="round" />
 									</svg>
 								</button>
-							<ul class="dropdown-menu profile-dropdown p-3 dropdown-menu-end"
-								aria-labelledby="UserDropdown">
+							<ul class="dropdown-menu profile-dropdown p-3 dropdown-menu-end" aria-labelledby="UserDropdown">
 								<li>
 									<a class="dropdown-item d-flex align-items-center justify-content-between" href="#">
 										<img class="profile-avatar" src="{% static 'img/avatar/crocodile1.png' %}" alt="" />
@@ -136,9 +129,7 @@
 								<li>
 									<hr class="dropdown-divider" />
 								</li>
-
-								
-
+=
 								<li>
 									<a class="primary-color dropdown-item" href="{% url 'accounts:logout' %}">Log Out</a>
 								</li>
@@ -146,8 +137,7 @@
 						</div>
 					</li>
 					{% endif %}
-
-				</ul>
+=				</ul>
 
 				<div class="hamberger">
 					<i class="fa fa-bars" id="att" aria-hidden="true" onclick="OpenHam()"></i>
@@ -166,6 +156,7 @@
 					</div>
 
 					<!-- profile dropdown -->
+					{% if request.user.is_authenticated %}
 					<li class="ham-items nav-items mt-3">
 						<div class="dropdown-center nav-items">
 							
@@ -181,7 +172,7 @@
 									<a class="dropdown-item d-flex align-items-center justify-content-between" href="#">
 										<img class="profile-avatar" src="{% static 'img/avatar/crocodile1.png' %}" alt="" />
 										<p class="primary-color profile-name ms-3 mb-0">
-											matin94
+											{{request.user.username}}
 										</p>
 									</a>
 								</li>
@@ -198,18 +189,25 @@
 							</ul>
 						</div>
 					</li>
+                    {% endif %}
 
 					<!-- login -->
-					<li class="ham-items d-none">
-						<a class="login ham-link btn bg-color-primary secondary-color rounded-5" id="login"
+                    {% if not request.user.is_authenticated %}
+					<li class="ham-items">
+						<a class="login ham-link btn bg-color-primary secondary-color rounded-5 py-1 px-2" id="login"
 							href="{% url 'accounts:login' %}">Login</a>
 					</li>
+					<!-- signup -->
+					<li class="ham-item">
+						<a class="signup ham-link btn bg-color-primary secondary-color rounded-5 py-1 px-2" id="signup"
+							href="{% url 'accounts:signup' %}">SignUp</a>
+					</li>
+                    {% endif %}
 
 					<!-- page links -->
 					<li class="ham-items">
 						<a class="ham-link fw-bold fst-italic active" aria-current="page" href="{% url 'website:home' %}">Home</a>
 					</li>
-					
 					<li class="ham-items">
 						<a class="ham-link" href="{%url 'blog:index'%}">Blog</a>
 					</li>
@@ -239,7 +237,6 @@
 								</svg>
 						</button>
 					</li>
-
 					
 				</ul>
 			</div>
@@ -251,12 +248,10 @@
 					
 					<div class="modal-body">
 						<div class="input-group">
-							<input type="text"
-								class="form-control bg-color-secondary primary-color "
-								name="search" placeholder="Write Here" aria-label="Search" />
+							<input type="text" class="form-control bg-color-secondary primary-color " name="search"
+								placeholder="Write Here" aria-label="Search" />
 							<a href="">
-								<button
-									class="btn search-btn bg-color-primary secondary-color rounded-start-0 shadow "
+								<button class="btn search-btn bg-color-primary secondary-color rounded-start-0 shadow "
 									type="submit">
 									Search
 								</button>
@@ -419,10 +414,10 @@
 		const navEl = document.querySelector(".navbar");
 		const navBrand = document.querySelector(".navbar-brand");
 		const navLinks = document.querySelectorAll(".nav-link");
-		
 		const person = document.querySelector(".person");
 		const spacer = document.querySelector(".spacer");
 		const login = document.querySelector(".login");
+        const signup = document.querySelector(".signup");
 		const search = document.querySelector(".search-icon");
 		const search_box = document.querySelectorAll(".search-box");
 		const search_btn = document.querySelector(".search-btn");
@@ -452,16 +447,23 @@
 					search_.classList.remove("bg-color-secondary-50");
 					search_.classList.add("bg-color-primary");
 				});
+                
+                if (login && signup){
+                    login.classList.remove("secondary-color", "bg-color-primary");
+                    login.classList.add("primary-color", "bg-color-secondary");
 
-				
+                    signup.classList.remove("secondary-color", "bg-color-primary");
+                    signup.classList.add("primary-color", "bg-color-secondary");
+                }
 
-				person.removeAttribute("stroke");
-				person.setAttribute("stroke", "#eff3ff");
-				spacer.removeAttribute("stroke");
-				spacer.setAttribute("stroke", "#eff3ff");
+				if (person && spacer) {
+                    person.removeAttribute("stroke");
+                    person.setAttribute("stroke", "#eff3ff");
 
-				login.classList.remove("secondary-color", "bg-color-primary");
-				login.classList.add("primary-color", "bg-color-secondary");
+                    spacer.removeAttribute("stroke");
+                    spacer.setAttribute("stroke", "#eff3ff");
+                }
+
 			} else if (window.scrollY < 60) {
 				navEl.classList.remove("navbar-scrolled");
 				navEl.classList.add("mt-5", "rounded-5", "mx-5");
@@ -484,15 +486,23 @@
 					search_.classList.add("bg-color-secondary-50");
 				});
 
+				if (login && signup){
+                    login.classList.remove("primary-color", "bg-color-secondary");
+                    login.classList.add("secondary-color", "bg-color-primary");
+
+                    signup.classList.remove("primary-color", "bg-color-secondary");
+                    signup.classList.add("secondary-color", "bg-color-primary");
+                }
+
+				if (person && spacer) {
+                    person.removeAttribute("stroke");
+                    person.setAttribute("stroke", "#010c8e");
+                    
+                    spacer.removeAttribute("stroke");
+                    spacer.setAttribute("stroke", "#010c8e");
+                }
+
 				
-
-				person.removeAttribute("stroke");
-				person.setAttribute("stroke", "#010c8e");
-				spacer.removeAttribute("stroke");
-				spacer.setAttribute("stroke", "#010c8e");
-
-				login.classList.remove("primary-color", "bg-color-secondary");
-				login.classList.add("secondary-color", "bg-color-primary");
 			}
 		});
 	</script>

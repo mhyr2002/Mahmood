@@ -71,16 +71,23 @@
 						</div>
 					</li>
 
+					{% if not request.user.is_authenticated %}
 					<!-- login -->
 					<li class="nav-item">
-						<a class="login btn bg-color-secondary primary-color rounded-5 " id="login"
-							href="login.html">Login</a>
+						<a class="login btn bg-color-primary secondary-color rounded-5" id="login"
+							href="{% url 'accounts:login' %}">Login</a>
 					</li>
+					<!-- signup -->
+					<li class="nav-item ps-2">
+						<a class="signup btn bg-color-primary secondary-color rounded-5" id="signup"
+							href="{% url 'accounts:signup' %}">SignUp</a>
+					</li>
+					{% endif %}
 
 					<!-- profile -->
+                    {% if request.user.is_authenticated %}
 					<li class="user-dropdown">
-						<div class="dropdown-center">
-							<div class="d-flex align-items-center">
+						<div class="dropdown">
 								<button id="UserDropdown" class="btn" type="button" data-bs-toggle="dropdown"
 									data-bs-auto-close="true" aria-expanded="false">
 									<svg class="me-2" width="3" height="27" viewBox="0 0 3 27" fill="none"
@@ -96,15 +103,12 @@
 											stroke-linejoin="round" />
 									</svg>
 								</button>
-							</div>
-
-							<ul class="dropdown-menu profile-dropdown p-3 dropdown-menu-end"
-								aria-labelledby="UserDropdown">
+							<ul class="dropdown-menu profile-dropdown p-3 dropdown-menu-end" aria-labelledby="UserDropdown">
 								<li>
 									<a class="dropdown-item d-flex align-items-center justify-content-between" href="#">
 										<img class="profile-avatar" src="{% static 'img/avatar/crocodile1.png' %}" alt="" />
 										<p class="primary-color profile-name ms-3 mb-0">
-											matin94
+											{{request.user.username}}
 										</p>
 									</a>
 								</li>
@@ -114,11 +118,12 @@
 								</li>
 
 								<li>
-									<a class="primary-color dropdown-item" href="#">Log Out</a>
+									<a class="primary-color dropdown-item" href="{% url 'accounts:logout' %}">Log Out</a>
 								</li>
 							</ul>
 						</div>
 					</li>
+                    {% endif %}
 				</ul>
 
 				<div class="hamberger">
@@ -138,6 +143,7 @@
 					</div>
 
 					<!-- profile dropdown -->
+                    {% if request.user.is_authenticated %}
 					<li class="ham-items nav-items mt-3">
 						<div class="dropdown-center nav-items">
 							
@@ -153,7 +159,7 @@
 									<a class="dropdown-item d-flex align-items-center justify-content-between" href="#">
 										<img class="profile-avatar" src="{% static 'img/avatar/crocodile1.png' %}" alt="" />
 										<p class="primary-color profile-name ms-3 mb-0">
-											matin94
+											{{request.user.username}}
 										</p>
 									</a>
 								</li>
@@ -168,12 +174,20 @@
 							</ul>
 						</div>
 					</li>
+                    {% endif %}
 
 					<!-- login -->
-					<li class="ham-items d-none">
-						<a class="login ham-link btn bg-color-secondary primary-color rounded-5" id="login"
-							href="login.html">Login</a>
+                    {% if not request.user.is_authenticated %}
+					<li class="ham-items">
+						<a class="login ham-link btn bg-color-primary secondary-color rounded-5 py-1 px-2" id="login"
+							href="{% url 'accounts:login' %}">Login</a>
 					</li>
+					<!-- signup -->
+					<li class="ham-item">
+						<a class="signup ham-link btn bg-color-primary secondary-color rounded-5 py-1 px-2" id="signup"
+							href="{% url 'accounts:signup' %}">SignUp</a>
+					</li>
+                    {% endif %}
 
 					<!-- page links -->
 					<li class="ham-items">
@@ -183,10 +197,10 @@
 						<a class="ham-link" href="{% url 'blog:index' %}">Blog</a>
 					</li>
 					<li class="ham-items">
-						<a class="ham-link" href="#">About-Us</a>
+						<a class="ham-link" href="{% url 'website:about' %}">About Us</a>
 					</li>
 					<li class="ham-items">
-						<a class="ham-link" href="{% url 'website:contact' %}">Contact-Us</a>
+						<a class="ham-link" href="{% url 'website:contact' %}">Contact Us</a>
 					</li>
 
 					<!-- search -->
@@ -218,12 +232,10 @@
 					
 					<div class="modal-body">
 						<div class="input-group">
-							<input type="text"
-								class="form-control bg-color-secondary secondary-color "
-								name="search" placeholder="Write Here" aria-label="Search" />
+							<input type="text" class="form-control bg-color-secondary secondary-color " name="search"
+                                placeholder="Write Here" aria-label="Search" />
 							<a href="">
-								<button
-									class="btn search-btn bg-color-primary secondary-color rounded-start-0 shadow "
+								<button class="btn search-btn bg-color-primary secondary-color rounded-start-0 shadow "
 									type="submit">
 									Search
 								</button>
@@ -252,7 +264,7 @@
                             <a href="{% url 'blog:single' pid=post.id  %}" class="text-decoration-none">
                                 <div class="py-0 position-relative">
                                     <img class="w-100 rounded-3" src="{{post.image.url}}" alt="">
-                                    <p class="view-counted position-absolute bg-color-secondary primary-color p-2 rounded-bottom-3 rounded-start-0">{{post.}}</p>
+                                    <p class="view-counted position-absolute bg-color-secondary primary-color p-2 rounded-bottom-3 rounded-start-0">{{post.counted_view}} views</p>
                                     <div>
                                         <p class="fw-bold mt-4 primary-color">
                                             
