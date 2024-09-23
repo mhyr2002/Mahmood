@@ -439,6 +439,9 @@ nav .navbar-nav .nav-item .nav-link {
     html {
         font-size: 0.65rem !important;
     }
+    html.no-fs {
+        font-size: initial !important;
+    }
     .view-counted {
         font-size: 1.5rem !important;
     }
