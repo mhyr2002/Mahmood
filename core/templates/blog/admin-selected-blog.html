@@ -3,7 +3,7 @@
 <div class="first-view">
 <div class="row mb-5">
     <div class="col-6 col-lg-8 d-flex flex-column justify-content-center pe-5">
-        <h1 class="selected-title fw-bold">{{post.title|truncatechars:20}}</h1>
+        <h1 class="selected-title fw-bold">{{post.title|truncatechars:35}}</h1>
         <p class="selected-intro ellipsis-intro lead">{{post.truncated_content}}</p>
         <a href="{%url 'blog:single' pid=post.id%}" class="btn rounded-5 bg-color-primary secondary-color text-nowrap ms-auto">Read more</a>
     </div>
