@@ -35,6 +35,8 @@ def blog_view (request,**kwargs):
     context =  {'posts' :posts}
     return render(request,'blog/blog-home.html',context)
 
+
+
 """fucntion to manage single page of blog"""
 def blog_single(request, pid):
     if request.method == 'POST':
@@ -54,9 +56,6 @@ def blog_single(request, pid):
     comments = Comment.objects.filter(post=post.id, approved=True)
     form = CommentForm()
     
-    print(posts)
-    print(similar_post)
-    print(post)
     # Create a HitCount object for the post
     # hit_count, created = HitCount.objects.get_or_create(content_object=post)
 

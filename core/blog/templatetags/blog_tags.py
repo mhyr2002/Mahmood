@@ -39,7 +39,8 @@ def function(pid):
 
 @register.inclusion_tag('blog/admin-selected-blog.html')
 def admin_selected_blog():
-    posts = Post.objects.filter(status=1).order_by('admin_selected' , 'updated_date')
+    posts = Post.objects.filter(status=1).order_by('-updated_date' )
+    posts = posts.filter(admin_selected=True)
     post = posts[0]
     if post.admin_selected == False :
         post = Post.objects.filter(status=1).order_by('-created_date')[0]

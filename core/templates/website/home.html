@@ -584,40 +584,30 @@
 						<div class="row">
 							<div class="col-xl-6 mb-4">
 								<div class="text-center bg-color-secondary border-0 py-3 mx-3 mb-4">
-									<a href="" class="text-decoration-none">
-										<div class="d-flex flex-wrap flex-sm-nowrap align-items-center justify-content-center xl-justify-content-start py-0">
-											<img class="blog-img shadow zoom" src="{% static 'img/profile1.jpg' %}" alt="" />
+									<a href="{%url 'blog:single' pid=post_first.id%}" class="text-decoration-none">
+										<div class="d-flex align-items-center justify-content-center xl-justify-content-start py-0">
+											<img class="blog-img shadow zoom" src="{{ post_first.image.url }}" alt="" />
 											<div class="ps-4">
 												<p class="fw-bold fs-3 my-4 primary-color">
-													Lorem ipsum
+													{{post_first.title|truncatechars:30}}
 												</p>
 												<p class="blog-content px-2 primary-50-color fs-5">
-													Lorem ipsum dolor sit
-													amet, consectetur
-													adipisicing elit.
-													Ratione, eaque? Cumque
-													reprehenderit tempore
-													officiis iste.
+													{{post_first.truncated_content}}
 												</p>
 											</div>
 										</div>
 									</a>
 								</div>
 								<div class="text-center bg-color-secondary border-0 py-3 mx-3">
-									<a href="" class="text-decoration-none">
-										<div class="d-flex flex-wrap flex-sm-nowrap align-items-center justify-content-center xl-justify-content-start py-0">
-											<img class="blog-img shadow zoom" src="{% static 'img/profile3.jpg' %}" alt="" />
+									<a href="{%url 'blog:single' pid=post_second.id%}" class="text-decoration-none">
+										<div class="d-flex align-items-center justify-content-center xl-justify-content-start py-0">
+											<img class="blog-img shadow zoom" src="{{ post_second.image.url }}" alt="" />
 											<div class="ps-4">
 												<p class="fw-bold fs-3 my-4 primary-color">
-													Lorem ipsum
+													{{post_second.title|truncatechars:30}}
 												</p>
 												<p class="blog-content px-2 primary-50-color fs-5">
-													Lorem ipsum dolor sit
-													amet, consectetur
-													adipisicing elit.
-													Ratione, eaque? Cumque
-													reprehenderit tempore
-													officiis iste.
+													{{post_second.truncated_content}}
 												</p>
 											</div>
 										</div>
@@ -626,40 +616,30 @@
 							</div>
 							<div class="col-xl-6 mb-4">
 								<div class="text-center bg-color-secondary border-0 py-3 mx-3 mb-4">
-									<a href="" class="text-decoration-none">
-										<div class="d-flex flex-wrap flex-sm-nowrap align-items-center justify-content-center xl-justify-content-end py-0">
-											<img class="blog-img shadow zoom" src="{% static 'img/profile4.jpg' %}" alt="" />
+									<a href="{%url 'blog:single' pid=post_third.id%}" class="text-decoration-none">
+										<div class="d-flex align-items-center justify-content-center xl-justify-content-end py-0">
+											<img class="blog-img shadow zoom" src="{{ post_third.image.url }}" alt="" />
 											<div class="ps-4">
 												<p class="fw-bold fs-3 my-4 primary-color">
-													Lorem ipsum
+													{{post_third.title|truncatechars:30}}
 												</p>
 												<p class="blog-content px-2 primary-50-color fs-5">
-													Lorem ipsum dolor sit
-													amet, consectetur
-													adipisicing elit.
-													Ratione, eaque? Cumque
-													reprehenderit tempore
-													officiis iste.
+													{{post_third.truncated_content}}
 												</p>
 											</div>
 										</div>
 									</a>
 								</div>
 								<div class="text-center bg-color-secondary border-0 py-3 mx-3">
-									<a href="" class="text-decoration-none">
-										<div class="d-flex flex-wrap flex-sm-nowrap align-items-center justify-content-center xl-justify-content-end py-0">
-											<img class="blog-img shadow zoom" src="{% static 'img/profile5.jpg' %}" alt=""/>
+									<a href="{%url 'blog:single' pid=post_fourth.id%}" class="text-decoration-none">
+										<div class="d-flex align-items-center justify-content-center xl-justify-content-end py-0">
+											<img class="blog-img shadow zoom" src="{{ post_fourth.image.url }}" alt=""/>
 											<div class="ps-4">
 												<p class="fw-bold fs-3 my-4 primary-color">
-													Lorem ipsum
+													{{post_fourth.title|truncatechars:30}}
 												</p>
 												<p class="blog-content px-2 primary-50-color fs-5">
-													Lorem ipsum dolor sit
-													amet, consectetur
-													adipisicing elit.
-													Ratione, eaque? Cumque
-													reprehenderit tempore
-													officiis iste.
+													{{post_fourth.truncated_content}}
 												</p>
 											</div>
 										</div>

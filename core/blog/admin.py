@@ -9,7 +9,7 @@ class PostAdmin(SummernoteModelAdmin):
     date_hierarchy = "created_date"
     empyt_valus_display = "-empty-"
     list_display = ("title","author", "counted_view", "status","login_require", "published_date", "created_date")
-    list_filter = ("status","author")
+    list_filter = ("status","author","admin_selected",)
     ordering = ("created_date",)
     search_fields = ["title", "content"]
     summernote_fields = ('content',)
