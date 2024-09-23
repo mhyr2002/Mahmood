@@ -1,35 +1,56 @@
 {% load static %}
 
-
-
 <div class="second-view">
     <div class="row d-flex justify-content-between">
         <div class="first-popular col-12 mb-4 mb-md-0 col-md-8 d-flex flex-column justify-content-between">
             <a class="" href="{%url 'blog:single' pid=post_first.id%}">
-                <img class="first-pop-img" src="{{post_first.image.url}}" alt="">
+                <div class="first-pop-bg w-100 rounded-3"></div>
+                <img class="first-pop-img d-none" src="{{post_first.image.url}}" alt="">
             </a>
             <div class="content mt-3 mx-3">
                 <h2 class="fw-bold">{{post_first.title|truncatechars:20}}</h2>
                 <p class="ellipsis-intro lead mb-0"> {{post_first.truncated_content}} </p>
             </div>
         </div>
-        {%for post in posts_second_third%}
-        <div class="other-popular col-12 col-md-4  d-flex flex-column justify-content-between">
+        {% for post in posts_second_third %}
+        <div class="other-popular col-12 col-md-4 d-flex flex-column justify-content-between">
             <div class="row first-other mb-2">
                 <a href="{%url 'blog:single' pid=post.id%}">
-                    <img class="other-pop-img" src="{{post.image.url}}" alt="">
+                    <div class="other-pop-bg w-100 rounded-3"></div>
+                    <img class="other-pop-img d-none" src="{{post.image.url}}" alt="">
                 </a>
                 <div class="content mt-2 mx-3">
                     <h5 class="fw-bold mb-0">{{post.title|truncatechars:20}}</h5>
-                    <p class="pop-intro mb-0">
-                        {{post.truncated_content}}
-                    </p>	
+                    <p class="pop-intro mb-0">{{post.truncated_content}}</p>    
                 </div>
             </div>
-            {%endfor%}
-            
-            
         </div>
+        {% endfor %}
     </div>
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // برای عنصر اول
+        const firstImgElement = document.querySelector('.first-pop-img');
+        if (firstImgElement) {
+            const firstImgSrc = firstImgElement.src;
+            const firstBgElement = document.querySelector('.first-pop-bg');
+            if (firstBgElement) {
+                firstBgElement.style.backgroundImage = `url(${firstImgSrc})`;
+            }
+        }
+
+        // برای عنصر‌های دیگر
+        const otherImgElements = document.querySelectorAll('.other-pop-img');
+        otherImgElements.forEach((imgElement, index) => {
+            if (imgElement) {
+                const imgSrc = imgElement.src;
+                const bgElement = imgElement.closest('.first-other').querySelector('.other-pop-bg');
+                if (bgElement) {
+                    bgElement.style.backgroundImage = `url(${imgSrc})`;
+                }
+            }
+        });
+    });
+</script>

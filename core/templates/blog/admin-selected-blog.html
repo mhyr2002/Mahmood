@@ -9,8 +9,23 @@
     </div>
     <div class="col-6 col-lg-4">
         <a href="{%url 'blog:single' pid=post.id%}">
-            <img class="selected-blog w-100 rounded-3" src="{{post.image.url}}" alt="">
+            <div class="selected rounded-3"></div>
+            <img class="selected-blog-img d-none" src="{{post.image.url}}" alt="">
         </a>
     </div>
 </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const imgElement = document.querySelector('.selected-blog-img');
+            if (imgElement) {
+                const imgSrc = imgElement.src; // دریافت آدرس عکس از src
+                const selectedElement = document.querySelector('.selected'); // انتخاب عنصر با کلاس selected
+                
+                if (selectedElement) {
+                    selectedElement.style.backgroundImage = `url(${imgSrc})`; // قرار دادن عکس به عنوان بک‌گراند
+                }
+            }
+    });
+</script>
