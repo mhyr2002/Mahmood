@@ -21,12 +21,15 @@ def postcategories():
 
 @register.inclusion_tag('blog/blog-popular-post.html')
 def most_view_posts():
-    post_first = Post.objects.filter(status=1).order_by('-counted_view')[0]
-    
-    posts_second_third =Post.objects.filter(status=1).order_by('-counted_view')[1:3]
+    posts =Post.objects.filter(status=1).order_by('-counted_view')[0:3]
+    post_first = posts[0]
+    post_second = posts[1]
+    post_third = posts[2]
+
     return {
         'post_first': post_first,
-        'posts_second_third' : posts_second_third
+        'post_second' : post_second,
+        'post_third' : post_third
         }
 
 #function for counting comment

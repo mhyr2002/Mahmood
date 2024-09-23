@@ -4,49 +4,71 @@
     <div class="row d-flex justify-content-between">
         <div class="first-popular col-12 mb-4 mb-md-0 col-md-8 d-flex flex-column justify-content-between">
             <a class="" href="{%url 'blog:single' pid=post_first.id%}">
-                <div class="first-pop-bg w-100 rounded-3"></div>
-                <img class="first-pop-img d-none" src="{{post_first.image.url}}" alt="">
+                <div class="first-popular-bg w-100 rounded-3"></div>
+                <img class="first-popular-img d-none" src="{{post_first.image.url}}" alt="">
             </a>
             <div class="content mt-3 mx-3">
                 <h2 class="fw-bold">{{post_first.title|truncatechars:35}}</h2>
                 <p class="ellipsis-intro lead mb-0"> {{post_first.truncated_content}} </p>
             </div>
         </div>
-        {% for post in posts_second_third %}
+       
         <div class="other-popular col-12 col-md-4 d-flex flex-column justify-content-between">
-            <div class="row first-other mb-2">
-                <a href="{%url 'blog:single' pid=post.id%}">
-                    <div class="other-pop-bg w-100 rounded-3"></div>
-                    <img class="other-pop-img d-none" src="{{post.image.url}}" alt="">
+            <div class="row second-popular mb-2">
+                <a href="{%url 'blog:single' pid=post_second.id%}">
+                    <div class="second-popular-bg w-100 rounded-3"></div>
+                    <img class="second-popular-img d-none" src="{{post_second.image.url}}" alt="">
                 </a>
                 <div class="content mt-2 mx-3">
-                    <h5 class="fw-bold mb-0">{{post.title|truncatechars:30}}</h5>
-                    <p class="pop-intro mb-0">{{post.truncated_content}}</p>    
+                    <h5 class="fw-bold mb-0">{{post_second.title|truncatechars:30}}</h5>
+                    <p class="pop-intro mb-0">{{post_second.truncated_content}}</p>    
+                </div>
+            </div>
+
+            <div class="row third-popular">
+                <a href="{%url 'blog:single' pid=post_third.id%}">
+                    <div class="third-popular-bg w-100 rounded-3"></div>
+                    <img class="third-popular-img d-none" src="{{post_third.image.url}}" alt="">
+                </a>
+                <div class="content mt-2 mx-3">
+                    <h5 class="fw-bold mb-0">{{post_third.title|truncatechars:30}}</h5>
+                    <p class="pop-intro mb-0">{{post_third.truncated_content}}</p>  
                 </div>
             </div>
         </div>
-        {% endfor %}
+        
     </div>
 </div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // برای عنصر اول
-        const firstImgElement = document.querySelector('.first-pop-img');
+        const firstImgElement = document.querySelector('.first-popular-img');
         if (firstImgElement) {
             const firstImgSrc = firstImgElement.src;
-            const firstBgElement = document.querySelector('.first-pop-bg');
+            const firstBgElement = document.querySelector('.first-popular-bg');
             if (firstBgElement) {
                 firstBgElement.style.backgroundImage = `url(${firstImgSrc})`;
             }
         }
 
         // برای عنصر‌های دیگر
-        const otherImgElements = document.querySelectorAll('.other-pop-img');
-        otherImgElements.forEach((imgElement, index) => {
+        const FirstotherImgElements = document.querySelectorAll('.second-popular-img');
+        FirstotherImgElements.forEach((imgElement, index) => {
             if (imgElement) {
                 const imgSrc = imgElement.src;
-                const bgElement = imgElement.closest('.first-other').querySelector('.other-pop-bg');
+                const bgElement = imgElement.closest('.second-popular').querySelector('.second-popular-bg');
+                if (bgElement) {
+                    bgElement.style.backgroundImage = `url(${imgSrc})`;
+                }
+            }
+        });
+        // برای عنصر‌های دیگر
+        const SecondotherImgElements = document.querySelectorAll('.third-popular-img');
+        SecondotherImgElements.forEach((imgElement, index) => {
+            if (imgElement) {
+                const imgSrc = imgElement.src;
+                const bgElement = imgElement.closest('.third-popular').querySelector('.third-popular-bg');
                 if (bgElement) {
                     bgElement.style.backgroundImage = `url(${imgSrc})`;
                 }

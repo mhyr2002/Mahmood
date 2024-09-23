@@ -1,8 +1,16 @@
 /* main */
 
 .blog-banner{
-    width: 50%;
-    height: auto;
+    width: 100%;
+    height: 50vh;
+    
+}
+
+.background-container {
+    width: 100%;
+    height: 70vh; /* ارتفاع دلخواه */
+    background-position: center;
+    background-size: cover;
     border-radius: 1rem;
     -webkit-border-radius: 1rem;
     -moz-border-radius: 1rem;

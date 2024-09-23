@@ -30,7 +30,7 @@
 					</li>
 					
 					<li class="nav-item">
-						<a class="nav-link fw-bold fst-italic active" href="blog.html">Blog</a>
+						<a class="nav-link fw-bold fst-italic active" href="{%url 'blog:index'%}">Blog</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{%url 'website:about'%}">About-Us</a>
@@ -69,7 +69,7 @@
 									method="GET">
 									<div class="input-group">
 										<input type="text"
-											class="form-control bg-color-secondary secondary-color border-3 border-white"
+											class="form-control bg-color-secondary primary-color border-3 border-white"
 											name="search" placeholder="Write Here" aria-label="Search" />
 										<a href="">
 											<button
@@ -252,7 +252,7 @@
 					<div class="modal-body">
 						<div class="input-group">
 							<input type="text"
-								class="form-control bg-color-secondary secondary-color "
+								class="form-control bg-color-secondary primary-color "
 								name="search" placeholder="Write Here" aria-label="Search" />
 							<a href="">
 								<button
@@ -276,9 +276,10 @@
 				<div class="starting-blog-page d-flex flex-column align-items-center justify-content-center">
 					<h1 class="primary-color fw-bolder">{{post.title}} </h1>
 
-                    <div class="blog-banner-container d-flex justify-content-center">
+                    <div class="blog-banner-container w-100 d-flex justify-content-center">
 
-                        <img src="{{post.image.url}}" class="blog-banner img-fluid img-thumbnail flex-grow-1 my-3" alt="blog-banner">
+                        <div class="background-container my-45"></div>
+                        <img src="{{post.image.url}}" class="blog-banner d-none" alt="blog-banner">
 
                     </div>
 				</div>
@@ -292,7 +293,7 @@
 	
 								<li class="col-2 col-sm-3 col-md-2">
 									<a href="#" class="fs-3 text-decoration-none primary-color fw-bolder">
-										<img src="{%static 'img/blog-page-starting-individual-profile-logo.png' %}" alt="individual-profile-logo" class="individual-profile-logo rounded-circle">
+										<img src="{%static 'img/avatar/crocodile2.png' %}" alt="individual-profile-logo" class="individual-profile-logo rounded-circle">
 									</a>
 								</li>
 								
@@ -331,30 +332,29 @@
 	
 				<h2 class="fw-bolder my-4">Similar content</h2>
 				<div class="row mt-5">
-						{%for spost in similar_post %}
-						<div class="col-md-4">
-                            <div class="text-center shadow rounded-4 result-blog p-3 mb-4 ">
-									<a href="{% url 'blog:single' pid=spost.id  %}" class="text-decoration-none">
-                                    <div class="py-0 position-relative">
-                                        <img class="w-100 rounded-3" src="{{spost.image.url}}" alt="">
-                                        <p class="view-counted position-absolute bg-color-secondary primary-color p-2 rounded-bottom-3 rounded-start-0">{{spost.counted_view}}</p>
-                                        <div>
-                                            <p class="fw-bold mt-4 primary-color">
-												{{spost.title}}
-                                            </p>
-                                            <div class="author d-flex justify-content-between px-3">
-                                                <p class="primary-50-color">by <span class="primary-color">{{spost.author}}</span></p>
-                                                <p class="primary-50-color">{{spost.published_date|date:"d M Y"}}</p>
-                                            </div>
+                    {%for spost in similar_post %}
+                    <div class="col-md-4">
+                        <div class="text-center shadow rounded-4 result-blog p-3 mb-4 ">
+                                <a href="{% url 'blog:single' pid=spost.id  %}" class="text-decoration-none">
+                                <div class="py-0 position-relative">
+                                    <img class="w-100 rounded-3" src="{{spost.image.url}}" alt="">
+                                    <p class="view-counted position-absolute bg-color-secondary primary-color p-2 rounded-bottom-3 rounded-start-0">{{spost.counted_view}} views</p>
+                                    <div>
+                                        <p class="fw-bold mt-4 primary-color">
+                                            {{spost.title}}
+                                        </p>
+                                        <div class="author d-flex justify-content-between px-3">
+                                            <p class="primary-50-color">by <span class="primary-color">{{spost.author}}</span></p>
+                                            <p class="primary-50-color">{{spost.published_date|date:"d M Y"}}</p>
                                         </div>
                                     </div>
-                                </a>
-                            </div>
+                                </div>
+                            </a>
                         </div>
-						{%endfor%}
-					<div class="d-flex justify-content-center gap-3">
-						
-					</div>
+                    </div>
+                    {%endfor%}
+                    
+					<div class="d-flex justify-content-center gap-3"></div>
 				</div>
 			</div>
         </section>
@@ -581,6 +581,19 @@
 			}
 		}
 	</script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // گرفتن تگ img
+            var imgElement = document.querySelector(".blog-banner");
+            // گرفتن مقدار src
+            var imgSrc = imgElement.getAttribute("src");
+            // تنظیم کردن تصویر به عنوان بکگراند برای کلاس مورد نظر
+            var backgroundContainer = document.querySelector(".background-container");
+            backgroundContainer.style.backgroundImage = "url('" + imgSrc + "')";
+        });
+    </script>
 </body>
 
 </html>

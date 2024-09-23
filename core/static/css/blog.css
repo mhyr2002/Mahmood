@@ -31,32 +31,31 @@
     background-position: center; 
 }
 
-.first-pop-img {
+.first-popular-img {
     height: 233px;
     width: 100%;
     border-radius: 0.5rem;
 }
 
-.first-pop-bg {
+.first-popular-bg {
     width: 100%; /* عرض کامل */
-    height: 200px; /* ارتفاع پیش‌فرض */
+    height: 250px; /* ارتفاع پیش‌فرض */
     background-size: cover; /* پوشاندن کامل */
     background-position: center; /* مرکز قرار دادن تصویر */
 }
 
-.other-pop-bg {
+.second-popular-bg {
     width: 100%; /* عرض کامل */
-    height: 100px; /* ارتفاع پیش‌فرض */
+    height: 150px; /* ارتفاع پیش‌فرض */
     background-size: cover; /* پوشاندن کامل */
     background-position: center; /* مرکز قرار دادن تصویر */
 }
-
-.other-pop-img {
-    height: 141px;
-    width: 100%;
-    border-radius: 0.5rem;
+.third-popular-bg {
+    width: 100%; /* عرض کامل */
+    height: 150px; /* ارتفاع پیش‌فرض */
+    background-size: cover; /* پوشاندن کامل */
+    background-position: center; /* مرکز قرار دادن تصویر */
 }
-
 
 .placeholder-box {
     background-color: #00008B;
