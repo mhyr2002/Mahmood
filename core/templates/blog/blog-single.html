@@ -89,12 +89,12 @@
 					{% if not request.user.is_authenticated %}
 					<!-- login -->
 					<li class="nav-item" style="margin-right: 10px;">
-						<a class="login btn bg-color-primary secondary-color rounded-5" id="login"
+						<a class="login btn bg-color-secondary primary-color rounded-5" id="login"
 							href="{% url 'accounts:login' %}">Login</a>
 					</li>
 					<!-- signup -->
 					<li class="nav-item">
-						<a class="login btn bg-color-primary secondary-color rounded-5" id="login"
+						<a class="login btn bg-color-secondary primary-color rounded-5" id="login"
 							href="{% url 'accounts:signup' %}">SignUp</a>
 					</li>
 					{% endif %}
